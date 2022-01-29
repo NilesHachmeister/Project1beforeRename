@@ -1,0 +1,20 @@
+:root{
+    --background: #333366;
+    --light: #ccccff;    
+}
+
+
+#sidebar{
+    background-color: var(--light);
+}
+
+#search-results{
+    background-color: var(--background);
+}
+
+/* 
+
+git checkout -b 'your initials *' git add -A git commit -m '' git checkout main/develop git pull git merge *your branch git push origin *
+
+
+*/

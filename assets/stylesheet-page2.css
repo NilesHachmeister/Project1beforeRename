@@ -1,0 +1,13 @@
+.top-bar{
+    font-family: sans-serif;
+    background-image:url('./cute-kawaii-food-pattern-prints.jpeg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:cover;
+    justify-content: center;
+    height: 200px;
+}
+
+h1{
+    background-image: linear-gradient(grey; white);
+}

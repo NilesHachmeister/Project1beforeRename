@@ -20,6 +20,31 @@ let recipeDirectionsArray = [];
 
 
 
+
+//dropdown restrictions
+
+
+
+
+
+
+
+//dropdown restri
+
+
+const languages = $('#languages').filterMultiSelect({ 
+    items: [
+        ["Ruby","r"],
+        ["C++","c",false,true]
+    ],
+    caseSensitive:false,
+    placeholderText:"nothing selected",
+    allowEnablingAndDisabling: true,
+   
+});
+
+languages.getSelectedOptionsAsJson(includeDisabled=true);
+
 //search bar? - buttons --- need to get buttons value
 
 
@@ -256,8 +281,10 @@ function saveRecipe() {
 // starts of page load
 init()
 
+$(document).foundation();
 
 //event listeners 
+
 $("#save-btn").on("click", saveInts)
 $("#search-form").on("submit", searchFunction)
 $("#save-recipe").on("click", saveRecipe)

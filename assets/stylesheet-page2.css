@@ -1,13 +1,40 @@
 .top-bar{
     font-family: sans-serif;
-    background-image:url('./cute-kawaii-food-pattern-prints.jpeg');
+    background-image:url("https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/cute-kawaii-food-pattern-valentina-hramov.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size:cover;
     justify-content: center;
-    height: 200px;
+    height: 400px;
+    margin-bottom: 20px;
 }
 
 h1{
-    background-image: linear-gradient(grey; white);
+    color: white;
+    padding: 0;
+}
+
+.column{
+    margin-bottom: 20px;
+    background-color: rgb(214 214 214);
+}
+
+.li{
+    background-image: linear-gradient(rgb(215 219 224) 7%, rgb(255, 255, 255) 100%);
+    list-style-type: none;
+}
+
+.button{
+    background-color: rgb(215 219 224);
+    font-size: large;
+}
+
+p{
+    background-color:rgb(232 232 232);
+    font-size: large;
+    padding: 5px;
+}
+
+a{
+   color: white;
 }

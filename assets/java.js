@@ -11,7 +11,9 @@ let searchTerm = ""
 let spoonURL = "https://api.spoonacular.com/recipes/complexSearch?apiKey=61eaa0a762fa43dfb497dc228b48ebd3";
 let googleURL = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=supermarket&zoom=11`
 
-let recipeLocation = 0;
+
+let recipeIDArray = [];
+let recipeID = 0;
 
 
 let recipeNameArray = [];
@@ -139,8 +141,31 @@ function callAPI() {
         })
         .then(function (data) {
             console.log(data);
-            console.log(spoonURL);
+            buildCards(data)
+
+            for (let index = 0; index < 6; index++) {
+                const element = data.results[index].id;
+                recipeIDArray.push(element)
+
+            }
+
         })
+
+
+}
+
+function callAPIByID() {
+    ; fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=61eaa0a762fa43dfb497dc228b48ebd3`)
+
+        .then(function (response2) {
+            return response2.json();
+        })
+        .then(function (data2) {
+            console.log(data2);
+            buildIngredients(data2)
+            buildInstructions(data2)
+        });
+
 }
 
 
@@ -149,7 +174,39 @@ function callAPI() {
 // googleMap = '<figure class = "image"><iframe width="100%" height="100%" frameborder="0" style="border:0" src="' + googleURL + '" allowfullscreen></iframe></figure>'
 
 
+function buildCards(data) {
 
+    let recipe1 = data.results[0].image;
+    $("#card-0-img").attr("src", recipe1)
+    let recipe1Title = data.results[0].title
+    $("#card-0-title").text(recipe1Title)
+
+
+    let recipe2 = data.results[1].image;
+    $("#card-1-img").attr("src", recipe2)
+    let recipe2Title = data.results[1].title
+    $("#card-1-title").text(recipe2Title)
+
+    let recipe3 = data.results[2].image;
+    $("#card-2-img").attr("src", recipe3)
+    let recipe3Title = data.results[2].title
+    $("#card-2-title").text(recipe3Title)
+
+    let recipe4 = data.results[3].image;
+    $("#card-3-img").attr("src", recipe4)
+    let recipe4Title = data.results[3].title
+    $("#card-3-title").text(recipe4Title)
+
+    let recipe5 = data.results[4].image;
+    $("#card-4-img").attr("src", recipe5)
+    let recipe5Title = data.results[4].title
+    $("#card-4-title").text(recipe5Title)
+
+    let recipe6 = data.results[5].image;
+    $("#card-5-img").attr("src", recipe6)
+    let recipe6Title = data.results[5].title
+    $("#card-5-title").text(recipe6Title)
+}
 
 
 function saveInts() {
@@ -278,6 +335,46 @@ function saveRecipe() {
 }
 
 
+
+// builds an object based on the ingredients in the chosen recipe
+function buildIngredients(data2) {
+
+    let saveRecipeObj = {
+        amount: [],
+        unit: [],
+        name: [],
+    }
+
+    for (let index = 0; index < data2.extendedIngredients.length; index++) {
+
+
+        let amount = data2.extendedIngredients[index].measures.us.amount
+        let unit = data2.extendedIngredients[index].measures.us.unitLong
+        let name = data2.extendedIngredients[index].name
+
+
+        saveRecipeObj.amount.push(amount)
+        saveRecipeObj.unit.push(unit)
+        saveRecipeObj.name.push(name)
+    }
+
+    // call a function to spit out the obj
+
+}
+
+// builds an instructions array
+function buildInstructions(data2) {
+    let saveInstructions = [];
+
+    for (let index = 0; index < data2.analyzedInstructions[0].steps.length; index++) {
+
+        let step = (index + 1) + " " + data2.analyzedInstructions[0].steps[index].step
+        saveInstructions.push(step)
+    }
+    console.log(saveInstructions);
+}
+
+
 // starts of page load
 init()
 
@@ -288,3 +385,35 @@ $(document).foundation();
 $("#save-btn").on("click", saveInts)
 $("#search-form").on("submit", searchFunction)
 $("#save-recipe").on("click", saveRecipe)
+
+
+
+
+
+
+
+
+$("#recipe-save-1").on("click", function () {
+    recipeID = recipeIDArray[0]
+    callAPIByID(recipeID)
+});
+$("#recipe-save-2").on("click", function () {
+    recipeID = recipeIDArray[1]
+    callAPIByID(recipeID)
+});
+$("#recipe-save-3").on("click", function () {
+    recipeID = recipeIDArray[2]
+    callAPIByID(recipeID)
+});
+$("#recipe-save-4").on("click", function () {
+    recipeID = recipeIDArray[3]
+    callAPIByID(recipeID)
+});
+$("#recipe-save-5").on("click", function () {
+    recipeID = recipeIDArray[4]
+    callAPIByID(recipeID)
+});
+$("#recipe-save-6").on("click", function () {
+    recipeID = recipeIDArray[5]
+    callAPIByID(recipeID)
+});

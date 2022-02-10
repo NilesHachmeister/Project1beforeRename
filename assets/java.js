@@ -1,4 +1,3 @@
-
 let modalBtn = $("#modal-btn")
 
 
@@ -37,14 +36,13 @@ let savedRecipe = [];
 
 
 //dropdown restrictions
+var dropdown = document.querySelector('.dropdown');
+dropdown.addEventListener('click', function (event) {
+    event.stopPropagation();
+    dropdown.classList.toggle('is-active');
+});
 
 
-
-
-
-
-
-//dropdown restri
 
 
 // const languages = $('#languages').filterMultiSelect({
@@ -445,3 +443,4 @@ $("#recipe-save-6").on("click", function () {
     recipeID = recipeIDArray[5]
     callAPIByID(recipeID)
 });
+

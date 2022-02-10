@@ -22,7 +22,7 @@
   </nav>
 
   <!-- END NAV -->
-  <div class="container">
+  <div class="container" id="recipe-container">
     <div class="columns">
 
       <div class="column is-9">
@@ -35,10 +35,9 @@
             </div>
           </div>
 
+          <div class="columns recipe-container">
 
-          <div class="columns" id="recipe-container">
-
-            <div class=" column is-6">
+            <!-- <div class=" column is-6">
               <div class="card">
                 <header class="card-header">
                   <p class="card-header-title" contenteditable="true">
@@ -56,17 +55,13 @@
                     <div class="control has-icons-left has-icons-right directions">
                       <div class="text-input-for-recipe" contenteditable="true">Directions</div>
                       <button class="button save-recipe"><i>Save</i></button>
-                      <button class="button"><i>Mark as Favorite</i></button>
+                      <button class="button favorite-btn"><i>Mark as Favorite</i></button>
 
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-
-
-
 
 
             <div class="column is-6">
@@ -91,13 +86,7 @@
                   </div>
                 </div>
               </div>
-            </div>
-
-
-
-
-
-
+            </div> -->
 
           </div>
       </div>
@@ -106,6 +95,7 @@
           <ul class="menu-list">
             <li><button><a>Your favorits</a></button></li>
             <li><button><a>Your Recipes</a></button></li>
+            <li><button class="create-new-recipe-btn"><a>Creat New Recipe</a></button></li>
             <br></br>
             <br></br>
 
@@ -118,7 +108,7 @@
     </div>
 
     <div class="footer">
-      <button><i class="fa fa-plus fa-30x"></i></button>
+      <button><i class="fa fa-plus fa-30x create-new-recipe-btn"></i></button>
     </div>
 
   </div>

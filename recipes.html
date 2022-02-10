@@ -2,120 +2,131 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin - Free Bulma template</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <!-- Bulma Version 0.9.0-->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/admin.css">
-    <link rel="stylesheet" href="./assets/stylesheet-page2.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin - Free Bulma template</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <!-- Bulma Version 0.9.0-->
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="../css/admin.css">
+  <link rel="stylesheet" href="./assets/stylesheet-page2.css">
 </head>
 
 <body>
 
-    <!-- START NAV -->
-    <nav>
-        <div class="container top-bar"></div>
-    </nav>
+  <!-- START NAV -->
+  <nav>
+    <div class="container top-bar"></div>
+  </nav>
 
-    <!-- END NAV -->
-    <div class="container">
-        <div class="columns">
+  <!-- END NAV -->
+  <div class="container">
+    <div class="columns">
 
-            <div class="column is-9">
-                <section class="hero is-info welcome is-small">
-                    <div class="hero-body">
-                        <div class="container">
-                            <h1 class="title">
-                                Your Recipes
-                            </h1>
-                        </div>
+      <div class="column is-9">
+        <section class="hero is-info welcome is-small">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                Your Recipes
+              </h1>
+            </div>
+          </div>
+
+
+          <div class="columns" id="recipe-container">
+
+            <div class=" column is-6">
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title" contenteditable="true">
+                    Your recipe
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p>Ingredients:</p>
+                    <div class="control has-icons-left has-icons-right ingredients">
+                      <div class="text-input-for-recipe" contenteditable="true">enter Ingredients</div>
+
                     </div>
-                    
-                
-                <div class="columns">
+                    <p>How to cook</p>
+                    <div class="control has-icons-left has-icons-right directions">
+                      <div class="text-input-for-recipe" contenteditable="true">Directions</div>
+                      <button class="button save-recipe"><i>Save</i></button>
+                      <button class="button"><i>Mark as Favorite</i></button>
 
-                    <div class="column is-6">
-                        <div class="card">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    Your recipe
-                                </p>
-                            </header>
-                            <div class="card-content">
-                                <div class="content">
-                                    <p>Ingredients:</p>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-large" type="text" placeholder="">
-                                   
-                                    </div>
-                                    <p>How to cook</p>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-large" type="text" placeholder="">
-                                         <button class="button"><i>Save</i></button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
-                    <div class="column is-6">
-                        <div class="card">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    Your recipe
-                                </p>
-                            </header>
-                            <div class="card-content">
-                                <div class="content">
-                                    <p>Ingredients:</p>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-large" type="text" placeholder="">
-                                   
-                                    </div>
-                                    <p>How to cook</p>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-large" type="text" placeholder="">
-                                         <button class="button"><i>Save</i></button>   
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
+                  </div>
                 </div>
-            </div>
-            <div class="column is-3 sider">
-                <aside class="menu is-hidden-mobile">
-                    <ul class="menu-list">
-                        <li><button><a>Your favorits</a></button></li>
-                        <li><button><a>Your Recipes</a></button></li>
-                        <br></br>
-                        <br></br>
-
-                        <li><button><a>Go back</a></button></li>
-                    </ul>
-                    
-                </aside>
+              </div>
             </div>
 
-        </div>
 
-        <div class="footer">
-            <button><i class="fa fa-plus fa-30x"></i></button>
-        </div>
+
+
+
+
+            <div class="column is-6">
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Your recipe
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p>Ingredients:</p>
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input is-large" type="text" placeholder="">
+
+                    </div>
+                    <p>How to cook</p>
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input is-large" type="text" placeholder="">
+                      <button class="button"><i>Save</i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+          </div>
+      </div>
+      <div class="column is-3 sider">
+        <aside class="menu is-hidden-mobile">
+          <ul class="menu-list">
+            <li><button><a>Your favorits</a></button></li>
+            <li><button><a>Your Recipes</a></button></li>
+            <br></br>
+            <br></br>
+
+            <li><button id="go-back-button"><a>Go back</a></button></li>
+          </ul>
+
+        </aside>
+      </div>
 
     </div>
-    
-    <script async type="text/javascript" src="../js/bulma.js"></script>
+
+    <div class="footer">
+      <button><i class="fa fa-plus fa-30x"></i></button>
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script async type="text/javascript" src="../js/bulma.js"></script>
+  <script src="./assets/java.js"></script>
 </body>
 
 </html>
-

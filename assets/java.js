@@ -9,7 +9,7 @@ let intolerantArray = [];
 let searchTerm = ""
 
 let spoonURL = "https://api.spoonacular.com/recipes/complexSearch?apiKey=61eaa0a762fa43dfb497dc228b48ebd3";
-let googleURL = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=supermarket&zoom=11`
+let googleURL = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=restaurantst&zoom=11`
 
 
 let recipeIDArray = [];
@@ -19,6 +19,19 @@ let recipeID = 0;
 let recipeNameArray = [];
 let recipeIngredientsArray = [];
 let recipeDirectionsArray = [];
+
+let savedRecipe = [];
+
+
+
+
+// make it so the recipe expands when hovered
+
+
+// move to pages depending on what is clicked
+
+
+// would there be a way to make a function a favorite?  or have those be most recently viewed?
 
 
 
@@ -34,62 +47,27 @@ let recipeDirectionsArray = [];
 //dropdown restri
 
 
-const languages = $('#languages').filterMultiSelect({ 
-    items: [
-        ["Ruby","r"],
-        ["C++","c",false,true]
-    ],
-    caseSensitive:false,
-    placeholderText:"nothing selected",
-    allowEnablingAndDisabling: true,
-   
-});
+// const languages = $('#languages').filterMultiSelect({
+//     items: [
+//         ["Ruby", "r"],
+//         ["C++", "c", false, true]
+//     ],
+//     caseSensitive: false,
+//     placeholderText: "nothing selected",
+//     allowEnablingAndDisabling: true,
 
-languages.getSelectedOptionsAsJson(includeDisabled=true);
+// });
 
-//search bar? - buttons --- need to get buttons value
+// languages.getSelectedOptionsAsJson(includeDisabled = true);
 
 
 
-// save recipe in local storage
-// make it so the recipe expands when hovered
+function getMap() {
 
+    console.log("map got");
+    googleMap = '<figure class = "image"><iframe width="100%" height="250" frameborder="0" style="border:0" src="' + googleURL + '" allowfullscreen></iframe></figure>'
 
-// move to pages depending on what is clicked
-
-
-
-//modual for the map when button is clicked
-
-
-
-//connect the searches to the card that way the card is populated with the info from the api
-// get info from api
-// set values of the card to be those recieved from the api
-
-
-// would there be a way to make a function a favorite?  or have those be most recently viewed?
-
-// would i need a random number genorator to make the recipes that show up random? or i could show last searched..
-
-
-
-// save button for recipe, and when you click it it saves the recipe to the recipe page in local storage
-// take the values from the recipe
-//save it to local storage
-
-
-
-function searchFunction(e) {
-    e.preventDefault()
-
-
-    //  this adds the searched value to the search term variable. 
-    let searchItem = $("#search").val();
-    searchTerm = "&query=" + searchItem
-
-    //    this then calls the api with the searched value
-    callAPI()
+    $("#map-holder").html(googleMap);
 }
 
 
@@ -99,6 +77,8 @@ function init() {
 
     // this compiles all of the current intolerances
     compileParams()
+    getMap()
+
 
 }
 
@@ -126,8 +106,9 @@ function compileParams() {
 
     }
 
-    // calls the api
     callAPI()
+
+
 }
 
 
@@ -162,8 +143,8 @@ function callAPIByID() {
         })
         .then(function (data2) {
             console.log(data2);
-            buildIngredients(data2)
-            buildInstructions(data2)
+            buildRecipeToSave(data2)
+
         });
 
 }
@@ -171,7 +152,7 @@ function callAPIByID() {
 
 
 
-// googleMap = '<figure class = "image"><iframe width="100%" height="100%" frameborder="0" style="border:0" src="' + googleURL + '" allowfullscreen></iframe></figure>'
+
 
 
 function buildCards(data) {
@@ -208,8 +189,21 @@ function buildCards(data) {
     $("#card-5-title").text(recipe6Title)
 }
 
+function addSearchTerm() {
 
-function saveInts() {
+    //  this adds the searched value to the search term variable. 
+    let searchItem = $("#search").val();
+    searchTerm = "&query=" + searchItem
+
+    callAPI()
+
+}
+
+function saveInts(e) {
+
+    e.preventDefault();
+
+
 
     // this clears local storage and the old array before adding what we currently want to save
     localStorage.clear("intolerantArray");
@@ -257,11 +251,25 @@ function saveInts() {
 
     // this takes everything in the array and saves it in local storage
     localStorage.setItem("intolerantArray", JSON.stringify(intolerantArray));
+
+
+    getStoredIntolerants()
+    compileParams()
+    addSearchTerm()
 }
 
 
 
 function getStoredIntolerants() {
+
+
+    if (JSON.parse(localStorage.getItem("savedRecipe")) !== null) {
+        savedRecipe = JSON.parse(localStorage.getItem("savedRecipe"))
+        console.log(savedRecipe);
+    }
+
+
+
 
     if (JSON.parse(localStorage.getItem("recipeName")) !== null) {
 
@@ -337,12 +345,14 @@ function saveRecipe() {
 
 
 // builds an object based on the ingredients in the chosen recipe
-function buildIngredients(data2) {
+function buildRecipeToSave(data2) {
 
-    let saveRecipeObj = {
+    let savedRecipeObj = {
         amount: [],
         unit: [],
         name: [],
+        favorite: false,
+        instrcuctions: [],
     }
 
     for (let index = 0; index < data2.extendedIngredients.length; index++) {
@@ -353,17 +363,12 @@ function buildIngredients(data2) {
         let name = data2.extendedIngredients[index].name
 
 
-        saveRecipeObj.amount.push(amount)
-        saveRecipeObj.unit.push(unit)
-        saveRecipeObj.name.push(name)
+        savedRecipeObj.amount.push(amount)
+        savedRecipeObj.unit.push(unit)
+        savedRecipeObj.name.push(name)
     }
 
-    // call a function to spit out the obj
 
-}
-
-// builds an instructions array
-function buildInstructions(data2) {
     let saveInstructions = [];
 
     for (let index = 0; index < data2.analyzedInstructions[0].steps.length; index++) {
@@ -371,21 +376,44 @@ function buildInstructions(data2) {
         let step = (index + 1) + " " + data2.analyzedInstructions[0].steps[index].step
         saveInstructions.push(step)
     }
-    console.log(saveInstructions);
+    savedRecipeObj.instrcuctions.push(saveInstructions)
+    savedRecipe.push(savedRecipeObj);
+    localStorage.setItem("savedRecipe", JSON.stringify(savedRecipe));
+
 }
+
+
 
 
 // starts of page load
 init()
 
-$(document).foundation();
+
+
+
+
+
 
 //event listeners 
-
 $("#save-btn").on("click", saveInts)
-$("#search-form").on("submit", searchFunction)
+
 $("#save-recipe").on("click", saveRecipe)
 
+
+
+
+
+
+
+$("#go-back-button").on("click", function () {
+    document.location.replace('./index.html');
+
+})
+
+$("#go-to-recipes-button").on("click", function () {
+    document.location.replace('./recipes.html');
+
+})
 
 
 

@@ -60,3 +60,12 @@ li button{
     border: 0;
     margin-bottom: 5px;
 }
+.card-header-title{
+    max-width: 100%;
+
+}
+.text-input-for-recipe{
+    width: 100%;
+min-height: 50px;
+border: 1px solid grey;
+}

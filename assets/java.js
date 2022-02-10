@@ -8,7 +8,7 @@ let intolerantArray = [];
 let searchTerm = ""
 
 let spoonURL = "https://api.spoonacular.com/recipes/complexSearch?apiKey=61eaa0a762fa43dfb497dc228b48ebd3";
-let googleURL = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=restaurantst&zoom=11`
+let googleURL = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=restaurantst&zoom=14`
 
 
 let recipeIDArray = [];
@@ -32,41 +32,17 @@ let savedRecipe = [];
 
 // would there be a way to make a function a favorite?  or have those be most recently viewed?
 
+// figure out "favorite", and "created" values for each recipe
 
 
 
-//dropdown restrictions
-var dropdown = document.querySelector('.dropdown');
-dropdown.addEventListener('click', function (event) {
-    event.stopPropagation();
-    dropdown.classList.toggle('is-active');
-});
+// connect map to searches :(
+
+// dropdowns save when dropdown is clicked away from also connect them
 
 
+// test search button
 
-
-// const languages = $('#languages').filterMultiSelect({
-//     items: [
-//         ["Ruby", "r"],
-//         ["C++", "c", false, true]
-//     ],
-//     caseSensitive: false,
-//     placeholderText: "nothing selected",
-//     allowEnablingAndDisabling: true,
-
-// });
-
-// languages.getSelectedOptionsAsJson(includeDisabled = true);
-
-
-
-function getMap() {
-
-    console.log("map got");
-    googleMap = '<figure class = "image"><iframe width="100%" height="250" frameborder="0" style="border:0" src="' + googleURL + '" allowfullscreen></iframe></figure>'
-
-    $("#map-holder").html(googleMap);
-}
 
 
 function init() {
@@ -79,6 +55,34 @@ function init() {
 
 
 }
+
+
+
+
+
+function getMap() {
+
+    console.log("map got");
+    googleMap = '<figure class = "image"><iframe width="100%" height="250" frameborder="0" style="border:0" src="' + googleURL + '" allowfullscreen></iframe></figure>'
+
+    $("#map-holder").html(googleMap);
+}
+
+
+
+
+
+function searchGoogleMaps() {
+
+    let userSearchTerm = $("#google-search-bar").val()
+    let userGoogleSearch = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=${userSearchTerm}t&zoom=14`
+
+
+    let userGoogleMap = '<figure class = "image"><iframe width="100%" height="250" frameborder="0" style="border:0" src="' + userGoogleSearch + '" allowfullscreen></iframe></figure>'
+
+    $("#map-holder").html(userGoogleMap);
+}
+
 
 
 
@@ -104,7 +108,7 @@ function compileParams() {
 
     }
 
-    callAPI()
+    // callAPI()
 
 
 }
@@ -155,36 +159,36 @@ function callAPIByID() {
 
 function buildCards(data) {
 
-    let recipe1 = data.results[0].image;
-    $("#card-0-img").attr("src", recipe1)
-    let recipe1Title = data.results[0].title
-    $("#card-0-title").text(recipe1Title)
+    // let recipe1 = data.results[0].image;
+    // $("#card-0-img").attr("src", recipe1)
+    // let recipe1Title = data.results[0].title
+    // $("#card-0-title").text(recipe1Title)
 
 
-    let recipe2 = data.results[1].image;
-    $("#card-1-img").attr("src", recipe2)
-    let recipe2Title = data.results[1].title
-    $("#card-1-title").text(recipe2Title)
+    // let recipe2 = data.results[1].image;
+    // $("#card-1-img").attr("src", recipe2)
+    // let recipe2Title = data.results[1].title
+    // $("#card-1-title").text(recipe2Title)
 
-    let recipe3 = data.results[2].image;
-    $("#card-2-img").attr("src", recipe3)
-    let recipe3Title = data.results[2].title
-    $("#card-2-title").text(recipe3Title)
+    // let recipe3 = data.results[2].image;
+    // $("#card-2-img").attr("src", recipe3)
+    // let recipe3Title = data.results[2].title
+    // $("#card-2-title").text(recipe3Title)
 
-    let recipe4 = data.results[3].image;
-    $("#card-3-img").attr("src", recipe4)
-    let recipe4Title = data.results[3].title
-    $("#card-3-title").text(recipe4Title)
+    // let recipe4 = data.results[3].image;
+    // $("#card-3-img").attr("src", recipe4)
+    // let recipe4Title = data.results[3].title
+    // $("#card-3-title").text(recipe4Title)
 
-    let recipe5 = data.results[4].image;
-    $("#card-4-img").attr("src", recipe5)
-    let recipe5Title = data.results[4].title
-    $("#card-4-title").text(recipe5Title)
+    // let recipe5 = data.results[4].image;
+    // $("#card-4-img").attr("src", recipe5)
+    // let recipe5Title = data.results[4].title
+    // $("#card-4-title").text(recipe5Title)
 
-    let recipe6 = data.results[5].image;
-    $("#card-5-img").attr("src", recipe6)
-    let recipe6Title = data.results[5].title
-    $("#card-5-title").text(recipe6Title)
+    // let recipe6 = data.results[5].image;
+    // $("#card-5-img").attr("src", recipe6)
+    // let recipe6Title = data.results[5].title
+    // $("#card-5-title").text(recipe6Title)
 }
 
 function addSearchTerm() {
@@ -193,13 +197,13 @@ function addSearchTerm() {
     let searchItem = $("#search").val();
     searchTerm = "&query=" + searchItem
 
-    callAPI()
+    // callAPI()
 
 }
 
-function saveInts(e) {
+function saveInts() {
 
-    e.preventDefault();
+
 
 
 
@@ -325,17 +329,140 @@ function getStoredIntolerants() {
 }
 
 
+
+
+
+
+
+function buildRecipeCards() {
+
+    let recipeContainer = $("#recipe-container")
+
+    let newDiv1 = $("<div>")
+    newDiv1.addClass("column is-6")
+    recipeContainer.append(newDiv1)
+
+    let newDiv2 = $("<div>")
+    newDiv2.addClass("card")
+    newDiv1.append(newDiv2)
+
+    let newHeader = $("<header>")
+    newHeader.addClass("card-header")
+    newDiv2.append(newHeader)
+
+    let newCardTitle = $("<p>")
+    newCardTitle.addClass("card-header-title")
+    newCardTitle.attr("contenteditable", "true")
+    newCardTitle.text("Your recipe name")
+    newHeader.append(newCardTitle)
+
+
+    let newCardBody = $("<div>")
+    newCardBody.addClass("card-content")
+    newDiv2.append(newCardBody)
+
+    let newCardContent = $("<div>")
+    newCardContent.addClass("content")
+    newCardBody.append(newCardContent)
+
+    let newIngredientsP = $("<p>")
+    newIngredientsP.text("Ingredients:")
+    newCardContent.append(newIngredientsP)
+
+    let newIngredientsControl = $("<div>")
+    newIngredientsControl.addClass("control has-icons-left has-icons-right  ingredients")
+    newCardContent.append(newIngredientsControl)
+
+    let newIngredientsInput = $("<div>")
+    newIngredientsInput.addClass("text-input-for-recipe")
+    newIngredientsInput.attr("contenteditable", "true")
+    newIngredientsInput.text("Ingredients")
+    newIngredientsControl.append(newIngredientsInput)
+
+    let newDirectionsP = $("<p>")
+    newDirectionsP.text("How To Cook:")
+    newCardContent.append(newDirectionsP)
+
+    let newDirectionsControl = $("<div>")
+    newDirectionsControl.addClass("control has-icons-left has-icons-right directions")
+    newCardContent.append(newDirectionsControl)
+
+    let newDirectionsInput = $("<div>")
+    newDirectionsInput.addClass("text-input-for-recipe")
+    newDirectionsInput.attr("contenteditable", "true")
+    newDirectionsInput.text("Directions")
+    newDirectionsControl.append(newDirectionsInput)
+
+    let newSaveBtn = $("<button>")
+    newSaveBtn.addClass("button save-recipe")
+    newSaveBtn.html("<i>Save</i>")
+    newDirectionsControl.append(newSaveBtn)
+
+    let newFavoriteBtn = $("<button>")
+    newFavoriteBtn.addClass("button")
+    newFavoriteBtn.html("<i>Mark as Favorite</i>")
+    newDirectionsControl.append(newFavoriteBtn)
+
+
+}
+
+
+
+function isEvenOrOdd(number) {
+    if ((number % 2) === 0 || number === 0) { console.log("even"); }
+    else {
+        console.log("odd");
+    }
+}
+
+isEvenOrOdd()
+
+
 function saveRecipe() {
 
-    // this taken the value in the forum and pushes them into arrays
-    recipeNameArray.push($("#name").val())
-    recipeIngredientsArray.push($("#ingredients").val())
-    recipeDirectionsArray.push($("#directions").val())
 
-    // this then takes the new arrays and pushes them into local storage
-    localStorage.setItem("recipeName", JSON.stringify(recipeNameArray));
-    localStorage.setItem("recipeIngredients", JSON.stringify(recipeIngredientsArray));
-    localStorage.setItem("recipeDirections", JSON.stringify(recipeDirectionsArray));
+
+    console.log("save Clicked");
+
+    // let savedRecipeObj = {
+    //     amount: [],
+    //     unit: [],
+    //     name: [],
+    //     instrcuctions: [],
+    //     favorite: false,
+    //     created: true,
+    // }
+
+
+
+    // this gets the new reciepes name
+    let newRecipeNameBox = $(this).parent(".control").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
+    let newRecipeName = newRecipeNameBox.text().trim()
+    console.log(newRecipeName);
+
+    // this gets the new recipes ingredients
+    let newRecipeIngredientsBox = $(this).parent(".control").parent(".content").children(".ingredients").children(".text-input-for-recipe")
+    let newRecipeIngredients = newRecipeIngredientsBox.text().trim()
+    console.log(newRecipeIngredients);
+
+    // this gets the new recipes direction
+    let newRecipeDirectionsBox = $(this).parent(".control").parent(".content").children(".directions").children(".text-input-for-recipe")
+    let newRecipeDirections = newRecipeDirectionsBox.text().trim()
+
+
+    console.log(newRecipeDirections);
+
+
+
+    // // this taken the value in the forum and pushes them into arrays
+    // recipeNameArray.push($("#name").val())
+    // recipeIngredientsArray.push($("#ingredients").val())
+    // recipeDirectionsArray.push($("#directions").val())
+
+    // // this then takes the new arrays and pushes them into local storage
+    // localStorage.setItem("recipeName", JSON.stringify(recipeNameArray));
+    // localStorage.setItem("recipeIngredients", JSON.stringify(recipeIngredientsArray));
+    // localStorage.setItem("recipeDirections", JSON.stringify(recipeDirectionsArray));
 
 
 }
@@ -349,8 +476,9 @@ function buildRecipeToSave(data2) {
         amount: [],
         unit: [],
         name: [],
-        favorite: false,
         instrcuctions: [],
+        favorite: false,
+        created: false,
     }
 
     for (let index = 0; index < data2.extendedIngredients.length; index++) {
@@ -386,7 +514,7 @@ function buildRecipeToSave(data2) {
 // starts of page load
 init()
 
-
+buildRecipeCards()
 
 
 
@@ -395,7 +523,7 @@ init()
 //event listeners 
 $("#save-btn").on("click", saveInts)
 
-$("#save-recipe").on("click", saveRecipe)
+$(".save-recipe").on("click", saveRecipe)
 
 
 
@@ -405,6 +533,7 @@ $("#save-recipe").on("click", saveRecipe)
 
 $("#go-back-button").on("click", function () {
     document.location.replace('./index.html');
+    console.log("clicked");
 
 })
 
@@ -415,32 +544,65 @@ $("#go-to-recipes-button").on("click", function () {
 
 
 
+$("#search-google-btn").on("click", searchGoogleMaps)
 
 
 
 
-$("#recipe-save-1").on("click", function () {
-    recipeID = recipeIDArray[0]
-    callAPIByID(recipeID)
-});
-$("#recipe-save-2").on("click", function () {
-    recipeID = recipeIDArray[1]
-    callAPIByID(recipeID)
-});
-$("#recipe-save-3").on("click", function () {
-    recipeID = recipeIDArray[2]
-    callAPIByID(recipeID)
-});
-$("#recipe-save-4").on("click", function () {
-    recipeID = recipeIDArray[3]
-    callAPIByID(recipeID)
-});
-$("#recipe-save-5").on("click", function () {
-    recipeID = recipeIDArray[4]
-    callAPIByID(recipeID)
-});
-$("#recipe-save-6").on("click", function () {
-    recipeID = recipeIDArray[5]
-    callAPIByID(recipeID)
-});
+let dropdown = $(".dropdown")
+dropdown.on("click", function (e) {
+    // e.stopPropagation();
+    dropdown.toggleClass('is-active');
+
+
+    if (e.target.type === "checkbox" || $(this).is("label")) {
+        dropdown.toggleClass('is-active');
+
+        saveInts()
+    }
+    console.log($(this).prop("className"));
+
+
+
+
+    if ($(this).hasClass("dropdown-item")) {
+        console.log("labeled...");
+    }
+
+})
+
+$("#search-btn").on("click", function (e) {
+    e.preventDefault()
+
+    saveInts()
+})
+
+
+
+
+
+// $("#recipe-save-1").on("click", function () {
+//     recipeID = recipeIDArray[0]
+//     callAPIByID(recipeID)
+// });
+// $("#recipe-save-2").on("click", function () {
+//     recipeID = recipeIDArray[1]
+//     callAPIByID(recipeID)
+// });
+// $("#recipe-save-3").on("click", function () {
+//     recipeID = recipeIDArray[2]
+//     callAPIByID(recipeID)
+// });
+// $("#recipe-save-4").on("click", function () {
+//     recipeID = recipeIDArray[3]
+//     callAPIByID(recipeID)
+// });
+// $("#recipe-save-5").on("click", function () {
+//     recipeID = recipeIDArray[4]
+//     callAPIByID(recipeID)
+// });
+// $("#recipe-save-6").on("click", function () {
+//     recipeID = recipeIDArray[5]
+//     callAPIByID(recipeID)
+// });
 

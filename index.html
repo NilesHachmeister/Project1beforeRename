@@ -2,29 +2,29 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
-    <title>Modal Cards - Free Bulma template</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel='stylesheet'
-        href='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/css/OverlayScrollbars.min.css'>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <!-- Bulma Version 0.9.0-->
-    <!-- practice -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <!-- practice -->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/hero.css">
-    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
-    <style>
-        .columns:nth-child(2) {
-            margin-top: -10rem;
-        }
-    </style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+	<title>Modal Cards - Free Bulma template</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel='stylesheet'
+		href='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/css/OverlayScrollbars.min.css'>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<!-- Bulma Version 0.9.0-->
+	<!-- practice -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+		integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<!-- practice -->
+	<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+	<link rel="stylesheet" type="text/css" href="../css/hero.css">
+	<link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+	<style>
+		.columns:nth-child(2) {
+			margin-top: -10rem;
+		}
+	</style>
 </head>
 
 <header>
@@ -33,49 +33,49 @@
 
 
 
-    <!-- Main container -->
-    <nav class="level">
-        <!-- Left side -->
-        <div class="level-left">
-            <div class="level-item">
+	<!-- Main container -->
+	<nav class="level">
+		<!-- Left side -->
+		<div class="level-left">
+			<div class="level-item">
 
-            </div>
-            <div class="level-item">
-                <div class="field has-addons">
-                    <p class="control">
-                        <input class="input" id="search" type="text" placeholder="Search for Recipes">
-                    </p>
-                    <p class="control">
-                        <button class="button">
-                            Search
-                        </button>
-                    </p>
-                </div>
-            </div>
-        </div>
+			</div>
+			<div class="level-item">
+				<div class="field has-addons">
+					<p class="control">
+						<input class="input" id="search" type="text" placeholder="Search for Recipes">
+					</p>
+					<p class="control">
+						<button class="button" id="search-btn">
+							Search
+						</button>
+					</p>
+				</div>
+			</div>
+		</div>
 
 
-        <!-- Main container -->
-        <nav class="level">
-            <!-- Left side -->
-            <div class="level-right">
-                <div class="level-item">
-                </div>
-                <div class="level-item">
-                    <div class="field has-addons">
-                        <p class="control">
-                            <a href="#map-holder"><input class="input" type="text"
-                                    placeholder="Restaurants Near You"></a>
-                        </p>
-                        <p class="control">
-                            <button class="button">
-                                Search
-                            </button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </nav>
+		<!-- Main container -->
+		<nav class="level">
+			<!-- Left side -->
+			<div class="level-right">
+				<div class="level-item">
+				</div>
+				<div class="level-item">
+					<div class="field has-addons">
+						<p class="control">
+							<a><input class="input" type="text" placeholder="Restaurants Near You"
+									id="google-search-bar"></a>
+						</p>
+						<p class="control">
+							<a href="#map-holder"><button class="button" id="search-google-btn">
+									Search
+								</button></a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</nav>
 </header>
 
 
@@ -83,251 +83,230 @@
 
 
 <body>
-    <section class="hero is-info is-small">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <p class="title">
-                    To Cook Or Not To Cook
-                </p>
-                <p class="subtitle">
-                    Trying to decide between opening your fridge and dining out? We've got you
-                    covered.
-                </p>
-            </div>
-        </div>
-    </section>
+	<section class="hero is-info is-small">
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<p class="title">
+					To Cook Or Not To Cook
+				</p>
+				<p class="subtitle">
+					Trying to decide between opening your fridge and dining out? We've got you
+					covered.
+				</p>
+			</div>
+		</div>
+	</section>
 
 
-    <!-- <Right side --> -->
-    <div class="box cta">
-        <div class="level-right">
+	<!-- <Right side --> -->
+	<div class="box cta">
+		<div class="level-right">
 
-            <p class="level-item" id="go-to-recipes-button"><a>Your Recipes</a></p>
-            <p class="level-item"><a>Your Favorite Restaurants</a></p>
-            <!-- <p class="level-item"><a class="button is-success">New</a></p> -->
+			<p class="level-item" id="go-to-recipes-button"><a>Your Recipes</a></p>
+			<p class="level-item"><a href="#map-holder">Your Favorite Restaurants</a></p>
+			<!-- <p class="level-item"><a class="button is-success">New</a></p> -->
 
-            <div class="dropdown">
-                <div class="dropdown-trigger">
-                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                        <span>Allergies/Restrictions</span>
-                        <span class="icon is-small">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                    <div class="dropdown-content">
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Dairy
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Egg
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Gluten
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Grain
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Peanut
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Seafood
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Sesame
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Sshellfish
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Soy
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Sulfite
-                            </label>
-                        </div>
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Tree Nut
-                            </label>
-                        </div>
-
-                        <div class="dropdown-item">
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                Wheat
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
+			<div class="dropdown">
+				<div class="dropdown-trigger">
+					<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+						<span>Allergies/Restrictions</span>
+						<span class="icon is-small">
+							<i class="fas fa-angle-down" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+				<div class="dropdown-menu" id="dropdown-menu" role="menu">
+					<div class="dropdown-content">
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance1" name="intolerance1" value="dairy">
+							<label for="intolerance1" > Dairy</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance2" name="intolerance2" value="egg">
+							<label for="intolerance2"> Egg</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance3" name="intolerance3" value="gluten">
+							<label for="intolerance3"> Gluten</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance4" name="intolerance4" value="grain">
+							<label for="intolerance4"> Grain</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance5" name="intolerance5" value="peanut">
+							<label for="intolerance5"> Peanut</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance6" name="intolerance6" value="seafood">
+							<label for="intolerance6"> Seafood</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance7" name="intolerance7" value="sesame">
+							<label for="intolerance7"> Sesame</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance8" name="intolerance8" value="shellfish">
+							<label for="intolerance8"> Shellfish</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance9" name="intolerance9" value="soy">
+							<label for="intolerance9"> Soy</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance10" name="intolerance10" value="sulfite">
+							<label for="intolerance10"> Sulfite</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance11" name="intolerance11" value="treenut">
+							<label for="intolerance11"> Tree Nut</label>
+						</div>
+						<div class="dropdown-item">
+							<input type="checkbox" id="intolerance12" name="intolerance12" value="wheat">
+							<label for="intolerance12"> Wheat</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
 
 
-    <!-- first row -->
-    <div class="tile is-ancestor">
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="subtitle">Name of Dish</p>
-                <button class="button is-small is-primary is-rounded" id="recipe-save-1">Save To My Recipes</button>
-            </article>
-        </div>
+	<!-- first row -->
+	<div class="tile is-ancestor">
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p><img id="card-0-img"></p>
+				<p class="subtitle" id="card-0-title"></p>
+				<button class="button is-small is-primary is-rounded" id="recipe-save-1">Save To My Recipes</button>
+			</article>
+		</div>
 
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="subtitle">Name of Dish</p>
-                <button class="button is-small is-primary is-rounded" id="recipe-save-2">Save To My Recipes</button>
-            </article>
-        </div>
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p><img id="card-1-img"></p>
+				<p class="subtitle" id="card-1-title"></p>
+				<button class="button is-small is-primary is-rounded" id="recipe-save-2">Save To My Recipes</button>
+			</article>
+		</div>
 
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="subtitle">Name of Dish</p>
-                <button class="button is-small is-primary is-rounded" id="recipe-save-3">Save To My Recipes</button>
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque
-                        tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                </div>
-            </article>
-        </div>
-    </div>
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p><img id="card-2-img"></p>
+				<p class="subtitle" id="card-2-title"></p>
+				<button class="button is-small is-primary is-rounded" id="recipe-save-3">Save To My Recipes</button>
+				<div class="content">
 
-    <!-- second row -->
-    <div class="tile is-ancestor">
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="subtitle">Name of Dish</p>
-                <button class="button is-small is-primary is-rounded" id="recipe-save-4">Save To My Recipes</button>
-            </article>
-        </div>
+				</div>
+			</article>
+		</div>
+	</div>
 
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="subtitle">Name of Dish</p>
-                <button class="button is-small is-primary is-rounded" id="recipe-save-5">Save To My Recipes</button>
-            </article>
-        </div>
+	<!-- second row -->
+	<div class="tile is-ancestor">
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p><img id="card-3-img"></p>
+				<p class="subtitle" id="card-3-title"></p>
+				<button class="button is-small is-primary is-rounded" id="recipe-save-4">Save To My Recipes</button>
+			</article>
+		</div>
 
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="subtitle">Name of Dish</p>
-                <button class="button is-small is-primary is-rounded" id="recipe-save-6">Save To My Recipes</button>
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque
-                        tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                </div>
-            </article>
-        </div>
-    </div>
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p><img id="card-4-img"></p>
+				<p class="subtitle" id="card-4-title"></p>
+				<button class="button is-small is-primary is-rounded" id="recipe-save-5">Save To My Recipes</button>
+			</article>
+		</div>
 
-    <footer>
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p><img id="card-5-img"></p>
+				<p class="subtitle" id="card-5-title"></p>
+				<button class="button is-small is-primary is-rounded" id="recipe-save-6">Save To My Recipes</button>
+				<div class="content">
 
-    </footer>
+				</div>
+			</article>
+		</div>
+	</div>
 
-    <section class="section" id="map-holder">
-        <div class="container">
-            <div class="content has-text-centered">
-                <article class="notification media has-background-white">
-                    <figure class="media-center">
-                    </figure>
-                </article>
+	<footer>
 
-            </div>
-        </div>
-    </section>
+	</footer>
+
+	<section class="section" id="map-holder">
+		<div class="container">
+			<div class="content has-text-centered">
+				<article class="notification media has-background-white">
+					<figure class="media-center">
+					</figure>
+				</article>
+
+			</div>
+		</div>
+	</section>
 
 
 
 
-    <!--  ===============
+	<!--  ===============
     HERE BE MODALS
     ===============  -->
-    <!-- 3dFlipVertical card tiny -->
+	<!-- 3dFlipVertical card tiny -->
 
-    <!-- end tiny modal card -->
-    <!-- Image modal -->
-    <div id="modal-image2" class="modal modal-fx-3dSlit">
-        <div class="modal-background"></div>
-        <div class="modal-content is-huge is-image">
-            <!-- content -->
-            <img src="https://source.unsplash.com/RWnpyGtY1aU" alt="image">
-            <!-- end content -->
-        </div>
-        <button class="modal-close is-large" aria-label="close"></button>
-    </div>
-    <!-- Image modal -->
-    <div id="modal-image4" class="modal modal-fx-3dSlit">
-        <div class="modal-background"></div>
-        <div class="modal-content is-huge is-image">
-            <!-- content -->
-            <img src="https://source.unsplash.com/hLyd1LukQ7E" alt="butterfly">
-            <!-- end content -->
-        </div>
-        <button class="modal-close is-large" aria-label="close"></button>
-    </div>
-    <!-- Image modal-->
-    <div id="modal-image" class="modal modal-fx-superScaled">
-        <div class="modal-background"></div>
-        <div class="modal-content  is-image">
-            <!-- content -->
-            <img src="https://res.cloudinary.com/ameo/image/upload/v1568711475/pexels-photo-1302883_fjje0f.jpg"
-                alt="Placeholder image">
-            <!--     <img src="https://source.unsplash.com/zFrUz_tNjCY" alt="placeholder">
+	<!-- end tiny modal card -->
+	<!-- Image modal -->
+	<div id="modal-image2" class="modal modal-fx-3dSlit">
+		<div class="modal-background"></div>
+		<div class="modal-content is-huge is-image">
+			<!-- content -->
+			<img src="https://source.unsplash.com/RWnpyGtY1aU" alt="image">
+			<!-- end content -->
+		</div>
+		<button class="modal-close is-large" aria-label="close"></button>
+	</div>
+	<!-- Image modal -->
+	<div id="modal-image4" class="modal modal-fx-3dSlit">
+		<div class="modal-background"></div>
+		<div class="modal-content is-huge is-image">
+			<!-- content -->
+			<img src="https://source.unsplash.com/hLyd1LukQ7E" alt="butterfly">
+			<!-- end content -->
+		</div>
+		<button class="modal-close is-large" aria-label="close"></button>
+	</div>
+	<!-- Image modal-->
+	<div id="modal-image" class="modal modal-fx-superScaled">
+		<div class="modal-background"></div>
+		<div class="modal-content  is-image">
+			<!-- content -->
+			<img src="https://res.cloudinary.com/ameo/image/upload/v1568711475/pexels-photo-1302883_fjje0f.jpg"
+				alt="Placeholder image">
+			<!--     <img src="https://source.unsplash.com/zFrUz_tNjCY" alt="placeholder">
         -->
-            <!-- end content -->
-        </div>
-        <button class="modal-close is-large" aria-label="close"></button>
-    </div>
+			<!-- end content -->
+		</div>
+		<button class="modal-close is-large" aria-label="close"></button>
+	</div>
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/js/OverlayScrollbars.min.js'></script>
-    <script src="./bulma.script.js"></script>
-    <script src="../js/wild.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            //The first argument are the elements to which the plugin shall be initialized
-            //The second argument has to be at least a empty object or a object with your desired options
-            OverlayScrollbars(document.querySelectorAll("body"), {});
-        });
-    </script>
-    <script src="./updatedmainjava.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/js/OverlayScrollbars.min.js'></script>
+	<script src="./bulma.script.js"></script>
+	<script src="../js/wild.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			//The first argument are the elements to which the plugin shall be initialized
+			//The second argument has to be at least a empty object or a object with your desired options
+			OverlayScrollbars(document.querySelectorAll("body"), {});
+		});
+	</script>
+	<script src="./assets/java.js"></script>
 </body>
 
 </html>

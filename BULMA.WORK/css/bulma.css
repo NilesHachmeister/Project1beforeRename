@@ -3276,7 +3276,7 @@ a.tag:hover {
   background-color: white;
   border-color: #dbdbdb;
   border-radius: 4px;
-  color: #363636;
+  color: black;
 }
 
 .input::-moz-placeholder, .textarea::-moz-placeholder, .select select::-moz-placeholder {
@@ -3374,7 +3374,7 @@ fieldset[disabled] .select select:-ms-input-placeholder,
 }
 
 .is-light.input, .is-light.textarea {
-  border-color: whitesmoke;
+  border-color: black;
 }
 
 .is-light.input:focus, .is-light.textarea:focus, .is-light.is-focused.input, .is-light.is-focused.textarea, .is-light.input:active, .is-light.textarea:active, .is-light.is-active.input, .is-light.is-active.textarea {

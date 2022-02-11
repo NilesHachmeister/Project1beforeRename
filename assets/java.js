@@ -36,8 +36,7 @@ let currentNumber = 0;
 // figure out "favorite", and "created" values for each recipe
 
 
-
-// dropdowns save when dropdown is clicked away from also connect them
+// save button on recipe list needs to save the current one instead of creating a new one
 
 
 
@@ -344,13 +343,13 @@ function compileRecipeCards() {
         let ingredientsToBePopulated = ""
 
         for (let i2 = 0; i2 < savedRecipe[index].ingredients.length; i2++) {
-            ingredientsToBePopulated += savedRecipe[index].ingredients[i2]
+            ingredientsToBePopulated += (savedRecipe[index].ingredients[i2] + "<br>")
         }
 
         let directionsToBePopulated = ""
 
         for (let i2 = 0; i2 < savedRecipe[index].instrcuctions.length; i2++) {
-            directionsToBePopulated += savedRecipe[index].instrcuctions[i2]
+            directionsToBePopulated += (savedRecipe[index].instrcuctions[i2] + "<br>")
         }
 
 
@@ -379,7 +378,7 @@ function compileRecipeCards() {
         let newCardTitle = $("<p>")
         newCardTitle.addClass("card-header-title")
         newCardTitle.attr("contenteditable", "true")
-        newCardTitle.text(savedRecipe[index].name[0])
+        newCardTitle.html(savedRecipe[index].name[0])
         newHeader.append(newCardTitle)
 
 
@@ -402,7 +401,7 @@ function compileRecipeCards() {
         let newIngredientsInput = $("<div>")
         newIngredientsInput.addClass("text-input-for-recipe")
         newIngredientsInput.attr("contenteditable", "true")
-        newIngredientsInput.text(ingredientsToBePopulated)
+        newIngredientsInput.html(ingredientsToBePopulated)
         newIngredientsControl.append(newIngredientsInput)
 
         let newDirectionsP = $("<p>")
@@ -416,7 +415,7 @@ function compileRecipeCards() {
         let newDirectionsInput = $("<div>")
         newDirectionsInput.addClass("text-input-for-recipe")
         newDirectionsInput.attr("contenteditable", "true")
-        newDirectionsInput.text(directionsToBePopulated)
+        newDirectionsInput.html(directionsToBePopulated)
         newDirectionsControl.append(newDirectionsInput)
 
         let newSaveBtn = $("<button>")
@@ -425,7 +424,7 @@ function compileRecipeCards() {
         newDirectionsControl.append(newSaveBtn)
 
         let newFavoriteBtn = $("<button>")
-        newFavoriteBtn.addClass("button")
+        newFavoriteBtn.addClass("button favorite-btn")
         newFavoriteBtn.html("<i>Mark as Favorite</i>")
         newDirectionsControl.append(newFavoriteBtn)
 
@@ -443,6 +442,8 @@ function compileRecipeCards() {
 
 
 function createEmptyRecipe() {
+
+
 
     if (isEvenOrOdd(currentNumber)) {
         console.log("even");
@@ -519,6 +520,10 @@ function createEmptyRecipe() {
     newFavoriteBtn.html("<i>Mark as Favorite</i>")
     newDirectionsControl.append(newFavoriteBtn)
 
+
+
+    currentNumber++
+
 }
 
 
@@ -547,17 +552,17 @@ function saveRecipe() {
 
     // this gets the new reciepes name
     let newRecipeNameBox = $(this).parent(".control").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
-    let newRecipeName = newRecipeNameBox.text().trim()
+    let newRecipeName = newRecipeNameBox.text()
     console.log(newRecipeName);
 
     // this gets the new recipes ingredients
     let newRecipeIngredientsBox = $(this).parent(".control").parent(".content").children(".ingredients").children(".text-input-for-recipe")
-    let newRecipeIngredients = newRecipeIngredientsBox.text().trim()
+    let newRecipeIngredients = newRecipeIngredientsBox.html()
     console.log(newRecipeIngredients);
 
     // this gets the new recipes direction
     let newRecipeDirectionsBox = $(this).parent(".control").parent(".content").children(".directions").children(".text-input-for-recipe")
-    let newRecipeDirections = newRecipeDirectionsBox.text().trim()
+    let newRecipeDirections = newRecipeDirectionsBox.html()
 
 
     console.log(newRecipeDirections);
@@ -604,12 +609,19 @@ function buildRecipeToSave(data2) {
 
     let saveInstructions = [];
 
+    let steps = ""
     for (let index = 0; index < data2.analyzedInstructions[0].steps.length; index++) {
 
-        let step = (index + 1) + " " + data2.analyzedInstructions[0].steps[index].step
-        saveInstructions.push(step)
+        steps += ((index + 1) + " " + data2.analyzedInstructions[0].steps[index].step + " " + "<br>")
+
     }
-    savedRecipeObj.instrcuctions.push(saveInstructions)
+    savedRecipeObj.instrcuctions.push(steps)
+
+    savedRecipeObj.name.push(data2.title)
+
+
+
+
     savedRecipe.push(savedRecipeObj);
     localStorage.setItem("savedRecipe", JSON.stringify(savedRecipe));
 }
@@ -619,6 +631,9 @@ function buildRecipeToSave(data2) {
 
 
 function findFavoriteRecipeName() {
+
+    console.log("we here?");
+
     let thisElement = $(this).parent(".control").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
 
     let thisTitle = thisElement.text().trim()
@@ -633,15 +648,22 @@ function findFavoriteRecipeName() {
 function addFavoriteToObject(thisTitle) {
 
     for (let index = 0; index < savedRecipe.length; index++) {
-        const element = savedRecipe[index].name;
+        const element = savedRecipe[index].name[0];
+
+
 
         if (element === thisTitle) {
-            console.log("match!!");
+
+
+            savedRecipe[index].favorite = true
+            //  push to array, push array to local storage
+
         }
-        console.log("one pass");
+
 
     }
 
+    localStorage.setItem("savedRecipe", JSON.stringify(savedRecipe));
 
 
 }
@@ -658,13 +680,13 @@ init()
 //event listeners 
 $("#save-btn").on("click", saveInts)
 
+$("#see-recipe-btn").on("click", saveInts)
+
+$("#recipe-container").on("click", ".save-recipe", saveRecipe)
+$("#recipe-container").on("click", ".favorite-btn", findFavoriteRecipeName)
 
 
-$("#ecipe-container").on("click", ".save-recipe", saveRecipe)
 
-
-
-$(".favorite-btn").on("click", findFavoriteRecipeName)
 
 $("#go-back-button").on("click", function () {
     document.location.replace('./index.html');
@@ -693,15 +715,7 @@ dropdown.on("click", function (e) {
     if (e.target.type === "checkbox" || $(this).is("label")) {
         dropdown.toggleClass('is-active');
 
-        saveInts()
-    }
-    console.log($(this).prop("className"));
 
-
-
-
-    if ($(this).hasClass("dropdown-item")) {
-        console.log("labeled...");
     }
 
 })

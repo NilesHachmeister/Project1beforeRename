@@ -19,3 +19,37 @@
 .top-img{
  height: 200px;
 }
+
+
+span {
+    color: black;
+    background-color: white;
+    opacity: 75%;
+    border: none;
+}
+
+
+.subtitle {
+    
+    font-weight: bolder;
+    font-style: oblique;
+}
+
+#main-title {
+    
+    font-weight: bolder;
+    font-style: normal;
+}
+
+
+#header-pic {
+    background-image:url("https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/cute-kawaii-food-pattern-valentina-hramov.jpg");
+        /* background-attachment: fixed; */
+     background-repeat: no-repeat;
+    background-size:cover;
+    justify-content: center;
+    height: 200px;
+    margin-bottom: 20px;
+    width: 100%;
+
+}

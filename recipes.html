@@ -1,100 +1,121 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Foundation | Welcome</title>
-  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin - Free Bulma template</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <!-- Bulma Version 0.9.0-->
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="../css/admin.css">
   <link rel="stylesheet" href="./assets/stylesheet-page2.css">
 </head>
 
 <body>
 
-  <!-- Start Top Bar -->
-  <div class="top-bar">
+  <!-- START NAV -->
+  <nav>
+    <div class="container top-bar"></div>
+  </nav>
 
-    <!-- <div class="top-bar-right">
-        <ul class="menu">
-          <li><a>Three</a></li>
-          <li><a>Four</a></li>
-          <li><a>Five</a></li>
-          <li><a>Six</a></li>
-        </ul>
-      </div> -->
-  </div>
-  <!-- End Top Bar -->
+  <!-- END NAV -->
+  <div class="container">
+    <div class="columns">
 
-  <div class="row">
-    <div class="row column text-center">
-      <h1>Your recepies</h1>
-
-    </div>
-
-    <div class="row">
-      <div class="column small-12">
-
-        <div class="column" data-sticky-container>
-          <div class="sticky" data-sticky data-anchor="content">
-            <h2>Categories</h2>
-            <ul>
-              <li><a class="button expanded">Favorits</a></li>
-              <li><a class="button expanded">Your recepies</a></li>
-              <li><a class="button expanded"></a></li>
-              <li><a class="button expanded" id="go-back-button">Go back</a></li>
-            </ul>
+      <div class="column is-9" id="recipe-container">
+        <section class="hero is-info welcome is-small">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                Your Recipes
+              </h1>
+            </div>
           </div>
-        </div>
+
+          <div class="columns recipe-container">
+
+            <!-- <div class=" column is-6">
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title" contenteditable="true">
+                    Your recipe
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p>Ingredients:</p>
+                    <div class="control has-icons-left has-icons-right ingredients">
+                      <div class="text-input-for-recipe" contenteditable="true">enter Ingredients</div>
+
+                    </div>
+                    <p>How to cook</p>
+                    <div class="control has-icons-left has-icons-right directions">
+                      <div class="text-input-for-recipe" contenteditable="true">Directions</div>
+                      <button class="button save-recipe"><i>Save</i></button>
+                      <button class="button favorite-btn"><i>Mark as Favorite</i></button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
-        <div class="row small-up-2 large-up-2">
-          <div class="column">
+            <div class="column is-6">
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Your recipe
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p>Ingredients:</p>
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input is-large" type="text" placeholder="">
 
-            <h2 id="card">Name</h2>
-            <p>Engredients:</p>
-            <textarea></textarea>
-            <p>How to cook:</p>
-            <textarea></textarea>
-            <a class="button expanded">Save</a>
+                    </div>
+                    <p>How to cook</p>
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input is-large" type="text" placeholder="">
+                      <button class="button"><i>Save</i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
           </div>
-          <div class="column">
-
-            <h2 id="card">Name</h2>
-            <p>Engredients</p>
-            <textarea></textarea>
-            <textarea></textarea>
-            <p>How to cook:</p>
-            <a class="button expanded">Save</a>
-          </div>
-          <div class="column">
-
-            <h2 id="card">Name</h2>
-            <p>Engredients</p>
-            <textarea></textarea>
-            <textarea></textarea>
-            <p>How to cook:</p>
-            <a class="button expanded">Save</a>
-          </div>
-          <div class="column">
-
-            <h2 id="card">Name</h2>
-            <p>Engredients</p>
-            <textarea></textarea>
-            <textarea></textarea>
-            <p>How to cook:</p>
-            <a class="button expanded">Save</a>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </div>
+      <div class="column is-3 sider">
+        <aside class="menu is-hidden-mobile">
+          <ul class="menu-list">
+            <li><button><a>Your favorits</a></button></li>
+            <li><button><a>Your Recipes</a></button></li>
+            <li><button class="create-new-recipe-btn"><a>Creat New Recipe</a></button></li>
+            <br></br>
+            <br></br>
 
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
+            <li><button id="go-back-button"><a>Go back</a></button></li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <button><i class="fa fa-plus fa-30x create-new-recipe-btn"></i></button>
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script async type="text/javascript" src="../js/bulma.js"></script>
   <script src="./assets/java.js"></script>
 </body>
 

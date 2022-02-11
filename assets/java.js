@@ -1,4 +1,3 @@
-
 let modalBtn = $("#modal-btn")
 
 
@@ -9,7 +8,7 @@ let intolerantArray = [];
 let searchTerm = ""
 
 let spoonURL = "https://api.spoonacular.com/recipes/complexSearch?apiKey=61eaa0a762fa43dfb497dc228b48ebd3";
-let googleURL = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=restaurantst&zoom=11`
+let googleURL = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=restaurantst&zoom=14`
 
 
 let recipeIDArray = [];
@@ -22,43 +21,39 @@ let recipeDirectionsArray = [];
 
 let savedRecipe = [];
 
-
-
-
-// make it so the recipe expands when hovered
-
-
-// move to pages depending on what is clicked
-
-
-// would there be a way to make a function a favorite?  or have those be most recently viewed?
+let currentNumber = 0;
 
 
 
 
-//dropdown restrictions
+// add remove recipe btn
+
+// placeholder text removes itself automatically for created recipe
 
 
 
 
+// figure out "favorite", and "created" values for each recipe
+
+
+// save button on recipe list needs to save the current one instead of creating a new one
 
 
 
-//dropdown restri
+function init() {
+    //  this gets all of the stored intolerant items
+    getStoredIntolerants()
+
+    // this compiles all of the current intolerances
+    compileParams()
+    getMap()
+
+    compileRecipeCards()
 
 
-// const languages = $('#languages').filterMultiSelect({
-//     items: [
-//         ["Ruby", "r"],
-//         ["C++", "c", false, true]
-//     ],
-//     caseSensitive: false,
-//     placeholderText: "nothing selected",
-//     allowEnablingAndDisabling: true,
+}
 
-// });
 
-// languages.getSelectedOptionsAsJson(includeDisabled = true);
 
 
 
@@ -71,16 +66,20 @@ function getMap() {
 }
 
 
-function init() {
-    //  this gets all of the stored intolerant items
-    getStoredIntolerants()
-
-    // this compiles all of the current intolerances
-    compileParams()
-    getMap()
 
 
+
+function searchGoogleMaps() {
+
+    let userSearchTerm = $("#google-search-bar").val()
+    let userGoogleSearch = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=${userSearchTerm}t&zoom=14`
+
+
+    let userGoogleMap = '<figure class = "image"><iframe width="100%" height="250" frameborder="0" style="border:0" src="' + userGoogleSearch + '" allowfullscreen></iframe></figure>'
+
+    $("#map-holder").html(userGoogleMap);
 }
+
 
 
 
@@ -199,9 +198,9 @@ function addSearchTerm() {
 
 }
 
-function saveInts(e) {
+function saveInts() {
 
-    e.preventDefault();
+
 
 
 
@@ -327,17 +326,258 @@ function getStoredIntolerants() {
 }
 
 
+
+
+function compileRecipeCards() {
+
+    if (savedRecipe.length === 0) {
+        createEmptyRecipe()
+    }
+
+
+    console.log(savedRecipe.length);
+
+    for (let index = 0; index < savedRecipe.length; index++) {
+
+
+        let ingredientsToBePopulated = ""
+
+        for (let i2 = 0; i2 < savedRecipe[index].ingredients.length; i2++) {
+            ingredientsToBePopulated += (savedRecipe[index].ingredients[i2] + "<br>")
+        }
+
+        let directionsToBePopulated = ""
+
+        for (let i2 = 0; i2 < savedRecipe[index].instrcuctions.length; i2++) {
+            directionsToBePopulated += (savedRecipe[index].instrcuctions[i2] + "<br>")
+        }
+
+
+        if (isEvenOrOdd(currentNumber)) {
+            console.log("even");
+            let newContainer = $("<div>")
+            newContainer.addClass("columns recipe-container")
+            $(".welcome").append(newContainer)
+        }
+
+
+        let recipeContainer = $(".recipe-container")
+
+        let newDiv1 = $("<div>")
+        newDiv1.addClass("column is-6")
+        recipeContainer.append(newDiv1)
+
+        let newDiv2 = $("<div>")
+        newDiv2.addClass("card")
+        newDiv1.append(newDiv2)
+
+        let newHeader = $("<header>")
+        newHeader.addClass("card-header")
+        newDiv2.append(newHeader)
+
+        let newCardTitle = $("<p>")
+        newCardTitle.addClass("card-header-title")
+        newCardTitle.attr("contenteditable", "true")
+        newCardTitle.html(savedRecipe[index].name[0])
+        newHeader.append(newCardTitle)
+
+
+        let newCardBody = $("<div>")
+        newCardBody.addClass("card-content")
+        newDiv2.append(newCardBody)
+
+        let newCardContent = $("<div>")
+        newCardContent.addClass("content")
+        newCardBody.append(newCardContent)
+
+        let newIngredientsP = $("<p>")
+        newIngredientsP.text("Ingredients:")
+        newCardContent.append(newIngredientsP)
+
+        let newIngredientsControl = $("<div>")
+        newIngredientsControl.addClass("control has-icons-left has-icons-right  ingredients")
+        newCardContent.append(newIngredientsControl)
+
+        let newIngredientsInput = $("<div>")
+        newIngredientsInput.addClass("text-input-for-recipe")
+        newIngredientsInput.attr("contenteditable", "true")
+        newIngredientsInput.html(ingredientsToBePopulated)
+        newIngredientsControl.append(newIngredientsInput)
+
+        let newDirectionsP = $("<p>")
+        newDirectionsP.text("How To Cook:")
+        newCardContent.append(newDirectionsP)
+
+        let newDirectionsControl = $("<div>")
+        newDirectionsControl.addClass("control has-icons-left has-icons-right directions")
+        newCardContent.append(newDirectionsControl)
+
+        let newDirectionsInput = $("<div>")
+        newDirectionsInput.addClass("text-input-for-recipe")
+        newDirectionsInput.attr("contenteditable", "true")
+        newDirectionsInput.html(directionsToBePopulated)
+        newDirectionsControl.append(newDirectionsInput)
+
+        let newSaveBtn = $("<button>")
+        newSaveBtn.addClass("button save-recipe")
+        newSaveBtn.html("<i>Save</i>")
+        newDirectionsControl.append(newSaveBtn)
+
+        let newFavoriteBtn = $("<button>")
+        newFavoriteBtn.addClass("button favorite-btn")
+        newFavoriteBtn.html("<i>Mark as Favorite</i>")
+        newDirectionsControl.append(newFavoriteBtn)
+
+
+
+        currentNumber++
+
+
+
+    }
+
+
+}
+
+
+
+function createEmptyRecipe() {
+
+
+
+    if (isEvenOrOdd(currentNumber)) {
+        console.log("even");
+        let newContainer = $("<div>")
+        newContainer.addClass("columns recipe-container")
+        $(".welcome").append(newContainer)
+    }
+
+
+    let recipeContainer = $(".recipe-container")
+
+    let newDiv1 = $("<div>")
+    newDiv1.addClass("column is-6")
+    recipeContainer.append(newDiv1)
+
+    let newDiv2 = $("<div>")
+    newDiv2.addClass("card")
+    newDiv1.append(newDiv2)
+
+    let newHeader = $("<header>")
+    newHeader.addClass("card-header")
+    newDiv2.append(newHeader)
+
+    let newCardTitle = $("<p>")
+    newCardTitle.addClass("card-header-title")
+    newCardTitle.attr("contenteditable", "true")
+    newCardTitle.text("Your recipe name")
+    newHeader.append(newCardTitle)
+
+
+    let newCardBody = $("<div>")
+    newCardBody.addClass("card-content")
+    newDiv2.append(newCardBody)
+
+    let newCardContent = $("<div>")
+    newCardContent.addClass("content")
+    newCardBody.append(newCardContent)
+
+    let newIngredientsP = $("<p>")
+    newIngredientsP.text("Ingredients:")
+    newCardContent.append(newIngredientsP)
+
+    let newIngredientsControl = $("<div>")
+    newIngredientsControl.addClass("control has-icons-left has-icons-right  ingredients")
+    newCardContent.append(newIngredientsControl)
+
+    let newIngredientsInput = $("<div>")
+    newIngredientsInput.addClass("text-input-for-recipe")
+    newIngredientsInput.attr("contenteditable", "true")
+    newIngredientsInput.text("Ingredients")
+    newIngredientsControl.append(newIngredientsInput)
+
+    let newDirectionsP = $("<p>")
+    newDirectionsP.text("How To Cook:")
+    newCardContent.append(newDirectionsP)
+
+    let newDirectionsControl = $("<div>")
+    newDirectionsControl.addClass("control has-icons-left has-icons-right directions")
+    newCardContent.append(newDirectionsControl)
+
+    let newDirectionsInput = $("<div>")
+    newDirectionsInput.addClass("text-input-for-recipe")
+    newDirectionsInput.attr("contenteditable", "true")
+    newDirectionsInput.text("Directions")
+    newDirectionsControl.append(newDirectionsInput)
+
+    let newSaveBtn = $("<button>")
+    newSaveBtn.addClass("button save-recipe")
+    newSaveBtn.html("<i>Save</i>")
+    newDirectionsControl.append(newSaveBtn)
+
+    let newFavoriteBtn = $("<button>")
+    newFavoriteBtn.addClass("button favorite-btn")
+    newFavoriteBtn.html("<i>Mark as Favorite</i>")
+    newDirectionsControl.append(newFavoriteBtn)
+
+
+
+    currentNumber++
+
+}
+
+
+
+function isEvenOrOdd(currentNumber) {
+    if ((currentNumber % 2) === 0 || currentNumber === 0) { return true; }
+    else {
+        return false;
+    }
+}
+
+isEvenOrOdd()
+
+
 function saveRecipe() {
 
-    // this taken the value in the forum and pushes them into arrays
-    recipeNameArray.push($("#name").val())
-    recipeIngredientsArray.push($("#ingredients").val())
-    recipeDirectionsArray.push($("#directions").val())
+    let savedRecipeObj = {
+        name: [],
+        ingredients: [],
+        instrcuctions: [],
+        favorite: false,
+        created: true,
+    }
 
-    // this then takes the new arrays and pushes them into local storage
-    localStorage.setItem("recipeName", JSON.stringify(recipeNameArray));
-    localStorage.setItem("recipeIngredients", JSON.stringify(recipeIngredientsArray));
-    localStorage.setItem("recipeDirections", JSON.stringify(recipeDirectionsArray));
+
+
+    // this gets the new reciepes name
+    let newRecipeNameBox = $(this).parent(".control").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
+    let newRecipeName = newRecipeNameBox.text()
+    console.log(newRecipeName);
+
+    // this gets the new recipes ingredients
+    let newRecipeIngredientsBox = $(this).parent(".control").parent(".content").children(".ingredients").children(".text-input-for-recipe")
+    let newRecipeIngredients = newRecipeIngredientsBox.html()
+    console.log(newRecipeIngredients);
+
+    // this gets the new recipes direction
+    let newRecipeDirectionsBox = $(this).parent(".control").parent(".content").children(".directions").children(".text-input-for-recipe")
+    let newRecipeDirections = newRecipeDirectionsBox.html()
+
+
+    console.log(newRecipeDirections);
+
+
+
+    savedRecipeObj.name.push(newRecipeName)
+    savedRecipeObj.ingredients.push(newRecipeIngredients)
+    savedRecipeObj.instrcuctions.push(newRecipeDirections)
+
+
+
+
+    savedRecipe.push(savedRecipeObj);
+    localStorage.setItem("savedRecipe", JSON.stringify(savedRecipe));
 
 
 }
@@ -348,11 +588,11 @@ function saveRecipe() {
 function buildRecipeToSave(data2) {
 
     let savedRecipeObj = {
-        amount: [],
-        unit: [],
         name: [],
-        favorite: false,
+        ingredients: [],
         instrcuctions: [],
+        favorite: false,
+        created: false,
     }
 
     for (let index = 0; index < data2.extendedIngredients.length; index++) {
@@ -363,26 +603,70 @@ function buildRecipeToSave(data2) {
         let name = data2.extendedIngredients[index].name
 
 
-        savedRecipeObj.amount.push(amount)
-        savedRecipeObj.unit.push(unit)
-        savedRecipeObj.name.push(name)
-    }
 
+        savedRecipeObj.ingredients.push(amount + " " + unit + " " + name)
+    }
 
     let saveInstructions = [];
 
+    let steps = ""
     for (let index = 0; index < data2.analyzedInstructions[0].steps.length; index++) {
 
-        let step = (index + 1) + " " + data2.analyzedInstructions[0].steps[index].step
-        saveInstructions.push(step)
+        steps += ((index + 1) + " " + data2.analyzedInstructions[0].steps[index].step + " " + "<br>")
+
     }
-    savedRecipeObj.instrcuctions.push(saveInstructions)
+    savedRecipeObj.instrcuctions.push(steps)
+
+    savedRecipeObj.name.push(data2.title)
+
+
+
+
     savedRecipe.push(savedRecipeObj);
     localStorage.setItem("savedRecipe", JSON.stringify(savedRecipe));
-
 }
 
 
+
+
+
+function findFavoriteRecipeName() {
+
+    console.log("we here?");
+
+    let thisElement = $(this).parent(".control").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
+
+    let thisTitle = thisElement.text().trim()
+    console.log(thisTitle);
+
+    addFavoriteToObject(thisTitle)
+
+
+
+}
+
+function addFavoriteToObject(thisTitle) {
+
+    for (let index = 0; index < savedRecipe.length; index++) {
+        const element = savedRecipe[index].name[0];
+
+
+
+        if (element === thisTitle) {
+
+
+            savedRecipe[index].favorite = true
+            //  push to array, push array to local storage
+
+        }
+
+
+    }
+
+    localStorage.setItem("savedRecipe", JSON.stringify(savedRecipe));
+
+
+}
 
 
 // starts of page load
@@ -393,20 +677,20 @@ init()
 
 
 
-
 //event listeners 
 $("#save-btn").on("click", saveInts)
 
-$("#save-recipe").on("click", saveRecipe)
+$("#see-recipe-btn").on("click", saveInts)
 
-
-
+$("#recipe-container").on("click", ".save-recipe", saveRecipe)
+$("#recipe-container").on("click", ".favorite-btn", findFavoriteRecipeName)
 
 
 
 
 $("#go-back-button").on("click", function () {
     document.location.replace('./index.html');
+    console.log("clicked");
 
 })
 
@@ -417,31 +701,88 @@ $("#go-to-recipes-button").on("click", function () {
 
 
 
+$("#search-google-btn").on("click", searchGoogleMaps)
 
 
+
+
+let dropdown = $(".dropdown")
+dropdown.on("click", function (e) {
+    // e.stopPropagation();
+    dropdown.toggleClass('is-active');
+
+
+    if (e.target.type === "checkbox" || $(this).is("label")) {
+        dropdown.toggleClass('is-active');
+
+
+    }
+
+})
+
+$("#search-btn").on("click", function (e) {
+    e.preventDefault()
+
+    saveInts()
+})
+
+
+$(".create-new-recipe-btn").on("click", createEmptyRecipe)
+
+
+
+function disableBtn1() {
+    document.getElementById("recipe-save-1").disabled = true;
+}
+function disableBtn2() {
+    document.getElementById("recipe-save-2").disabled = true;
+}
+function disableBtn3() {
+    document.getElementById("recipe-save-3").disabled = true;
+}
+function disableBtn4() {
+    document.getElementById("recipe-save-4").disabled = true;
+}
+function disableBtn5() {
+    document.getElementById("recipe-save-5").disabled = true;
+}
+function disableBtn6() {
+    document.getElementById("recipe-save-6").disabled = true;
+}
+  
+// function enableBtn() {
+//     document.getElementById("recipe-save-1", "recipe-save-2","recipe-save-3", "recipe-save-4", "recipe-save-5").disabled = false;
+// }
 
 
 $("#recipe-save-1").on("click", function () {
     recipeID = recipeIDArray[0]
     callAPIByID(recipeID)
+    disableBtn1();
 });
 $("#recipe-save-2").on("click", function () {
     recipeID = recipeIDArray[1]
     callAPIByID(recipeID)
+    disableBtn2();
 });
 $("#recipe-save-3").on("click", function () {
     recipeID = recipeIDArray[2]
     callAPIByID(recipeID)
+    disableBtn3();
 });
 $("#recipe-save-4").on("click", function () {
     recipeID = recipeIDArray[3]
     callAPIByID(recipeID)
+    disableBtn4();
 });
 $("#recipe-save-5").on("click", function () {
     recipeID = recipeIDArray[4]
     callAPIByID(recipeID)
+    disableBtn5();
 });
 $("#recipe-save-6").on("click", function () {
     recipeID = recipeIDArray[5]
     callAPIByID(recipeID)
+    disableBtn6();
 });
+

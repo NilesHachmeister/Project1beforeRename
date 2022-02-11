@@ -425,7 +425,7 @@ function compileRecipeCards() {
         newDirectionsControl.append(newSaveBtn)
 
         let newFavoriteBtn = $("<button>")
-        newFavoriteBtn.addClass("button")
+        newFavoriteBtn.addClass("button favorite-btn")
         newFavoriteBtn.html("<i>Mark as Favorite</i>")
         newDirectionsControl.append(newFavoriteBtn)
 
@@ -619,6 +619,9 @@ function buildRecipeToSave(data2) {
 
 
 function findFavoriteRecipeName() {
+
+    console.log("we here?");
+
     let thisElement = $(this).parent(".control").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
 
     let thisTitle = thisElement.text().trim()
@@ -633,12 +636,18 @@ function findFavoriteRecipeName() {
 function addFavoriteToObject(thisTitle) {
 
     for (let index = 0; index < savedRecipe.length; index++) {
-        const element = savedRecipe[index].name;
+        const element = savedRecipe[index].name[0];
+
+
 
         if (element === thisTitle) {
-            console.log("match!!");
+
+
+            savedRecipe[index].favorite = true
+            //  push to array, push array to local storage
+
         }
-        console.log("one pass");
+
 
     }
 
@@ -660,11 +669,11 @@ $("#save-btn").on("click", saveInts)
 
 
 
-$("#ecipe-container").on("click", ".save-recipe", saveRecipe)
+$("#recipe-container").on("click", ".save-recipe", saveRecipe)
+$("#recipe-container").on("click", ".favorite-btn", findFavoriteRecipeName)
 
 
 
-$(".favorite-btn").on("click", findFavoriteRecipeName)
 
 $("#go-back-button").on("click", function () {
     document.location.replace('./index.html');

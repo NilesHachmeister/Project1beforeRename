@@ -1,0 +1,155 @@
+.callout{
+    min-width: 100%;
+    min-height: 40vh;
+    background-color: #dbdee0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card-0-img{
+    width: 200px;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(25px);
+    padding: 15px;
+    border-radius: 20%;
+    margin-right: 10px;
+}
+#recipe-save-1{
+    justify-content: flex-end;
+    margin-top: 200px;
+}
+
+
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Blinker:wght@300;400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Blinker',sans-serif;
+    color: white;
+}
+
+i{
+    font-weight: 100;
+    color: white;
+}
+
+.callout{
+    min-width: 100%;
+    min-height: 40vh;
+    background-color: #091921;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.callout{
+    width: 400px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.head .lead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+}
+
+.profile-detail{
+    display: flex;
+    align-items: center;
+}
+
+.profile-detail .p-img{
+    width: 50px;
+    height: 50px;
+    border: 3px solid #c31432;
+    border-radius: 50%;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.card-1-title.lead .p-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.profile-detail .name{
+    font-size: 1.5rem;
+}
+
+.more i{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.post-img{
+    height: 70%;
+    width: 100%;
+    position: relative;
+}
+.post-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.post-img i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    /* transition: 1s; */
+}
+
+.active.post-img i{
+    animation: heart 1s linear;
+}
+
+@keyframes heart {
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    50%{
+        opacity: 1;
+        transform: scale(6);
+    }
+}
+
+.reactions{
+    margin-top: 1rem;
+}
+
+.reactions i{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.react-links i{
+    margin-right: 10px;
+}
+
+i.fa-heart:hover{
+    color: red;
+}
+
+.caption{
+    margin-top: 10px;
+    display: flex;
+}
+
+.caption .profile-name{
+    font-size: 1rem;
+    font-weight: 800;
+    margin-right: 10px;
+} */

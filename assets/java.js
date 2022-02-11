@@ -731,29 +731,58 @@ $(".create-new-recipe-btn").on("click", createEmptyRecipe)
 
 
 
+function disableBtn1() {
+    document.getElementById("recipe-save-1").disabled = true;
+}
+function disableBtn2() {
+    document.getElementById("recipe-save-2").disabled = true;
+}
+function disableBtn3() {
+    document.getElementById("recipe-save-3").disabled = true;
+}
+function disableBtn4() {
+    document.getElementById("recipe-save-4").disabled = true;
+}
+function disableBtn5() {
+    document.getElementById("recipe-save-5").disabled = true;
+}
+function disableBtn6() {
+    document.getElementById("recipe-save-6").disabled = true;
+}
+  
+// function enableBtn() {
+//     document.getElementById("recipe-save-1", "recipe-save-2","recipe-save-3", "recipe-save-4", "recipe-save-5").disabled = false;
+// }
+
 
 $("#recipe-save-1").on("click", function () {
     recipeID = recipeIDArray[0]
     callAPIByID(recipeID)
+    disableBtn1();
 });
 $("#recipe-save-2").on("click", function () {
     recipeID = recipeIDArray[1]
     callAPIByID(recipeID)
+    disableBtn2();
 });
 $("#recipe-save-3").on("click", function () {
     recipeID = recipeIDArray[2]
     callAPIByID(recipeID)
+    disableBtn3();
 });
 $("#recipe-save-4").on("click", function () {
     recipeID = recipeIDArray[3]
     callAPIByID(recipeID)
+    disableBtn4();
 });
 $("#recipe-save-5").on("click", function () {
     recipeID = recipeIDArray[4]
     callAPIByID(recipeID)
+    disableBtn5();
 });
 $("#recipe-save-6").on("click", function () {
     recipeID = recipeIDArray[5]
     callAPIByID(recipeID)
+    disableBtn6();
 });
 

@@ -47,7 +47,10 @@ container{
        }
 }
 
-
+.is-info {
+    background-color: #ffffff;
+    color: #fff;
+}
 
 
 /* @import url('https://fonts.googleapis.com/css2?family=Blinker:wght@300;400&display=swap');

@@ -547,18 +547,20 @@ function saveRecipe() {
     }
 
 
+    console.log("here");
+
+
     // this gets the new reciepes name
-    let newRecipeNameBox = $(this).parent(".control").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
+    let newRecipeNameBox = $(this).parent(".btn-container").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
     let newRecipeName = newRecipeNameBox.text()
-    console.log(newRecipeName + " _________");
 
     // this gets the new recipes ingredients
-    let newRecipeIngredientsBox = $(this).parent(".control").parent(".content").children(".ingredients").children(".text-input-for-recipe")
+    let newRecipeIngredientsBox = $(this).parent(".btn-container").parent(".content").children(".ingredients").children(".text-input-for-recipe")
     let newRecipeIngredients = newRecipeIngredientsBox.html()
-    console.log(newRecipeIngredients);
+
 
     // this gets the new recipes direction
-    let newRecipeDirectionsBox = $(this).parent(".control").parent(".content").children(".directions").children(".text-input-for-recipe")
+    let newRecipeDirectionsBox = $(this).parent(".btn-container").parent(".content").children(".directions").children(".text-input-for-recipe")
     let newRecipeDirections = newRecipeDirectionsBox.html()
 
     // this grabs the data id attribute of the selected  recipe
@@ -664,7 +666,7 @@ function buildRecipeToSave(data2) {
 function findFavoriteRecipeID() {
 
     // this finds the data id of the clicked card
-    let thisElement = $(this).parent(".control").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
+    let thisElement = $(this).parent(".btn-container").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
     let thisDataId = thisElement.attr("data-id")
 
     // this sends the data id to the add favorite function to give that chosen card the value of favorite
@@ -756,7 +758,7 @@ function sortByCreated() {
 function removeRecipe() {
 
     // this gets the recipe data-id number
-    let thisElement = $(this).parent(".control").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
+    let thisElement = $(this).parent(".btn-container").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
     let thisDataId = thisElement.attr("data-id")
 
     // this for loop checks every recipe

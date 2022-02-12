@@ -9,7 +9,7 @@ body{
     background-repeat: no-repeat;
     background-size:cover;
     justify-content: center;
-    height: 400px;
+    height: 200px;
     margin-bottom: 20px;
     width: 100%;
 
@@ -28,10 +28,8 @@ h1{
 
 }
 
-.hero-body{
-    background-color: rgb(214 217 220);
-}
 
+<<<<<<< HEAD
 .hero.is-info {
     background-color: #ffffff;
     color: #fff;
@@ -39,15 +37,14 @@ h1{
 
 .title{
     padding-bottom: 15px;
+=======
+.hero.is-info.is-small {
+    background-color: #FFFFFF;
+    color: #fff;
+>>>>>>> c9d6d833c9b679f65d35c54fe342b6c0139b9e8f
 }
 
-.hero-body{
-    background-color: rgb(214 217 220);
-}
 
-.title{
-    padding-bottom: 15px;
-}
 
 .hero-body{
     background-color: rgb(214 217 220);

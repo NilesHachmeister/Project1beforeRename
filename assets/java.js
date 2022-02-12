@@ -1,22 +1,15 @@
+// declaring variables
 let modalBtn = $("#modal-btn")
-
-
 const spoonAPIKey = "61eaa0a762fa43dfb497dc228b48ebd3"
 const googleAPIKey = "AIzaSyBrDSZjlqk6nk4E7-qJeQrilr6yOlcXvmY"
 let intolerantParams = "";
 let intolerantArray = [];
 let searchTerm = ""
-
 let spoonURL = "https://api.spoonacular.com/recipes/complexSearch?apiKey=61eaa0a762fa43dfb497dc228b48ebd3";
 let googleURL = `https://www.google.com/maps/embed/v1/search?key=${googleAPIKey}&q=restaurantst&zoom=14`
-
-
 let recipeIDArray = [];
 let recipeID = 0;
-
-
 let savedRecipe = [];
-
 let currentRecipeNumber = 0;
 
 
@@ -382,23 +375,28 @@ function createEmptyRecipe() {
     newDirectionsInput.attr("data-text", "Directions")
     newDirectionsControl.append(newDirectionsInput)
 
+    // creates a new container for the buttons
+    let newButtonContainer = $("<div>")
+    newButtonContainer.addClass("btn-container")
+    newCardContent.append(newButtonContainer)
+
     // this creates a save button for the user to click to save any updates information
     let newSaveBtn = $("<button>")
     newSaveBtn.addClass("button save-recipe")
     newSaveBtn.html("<i>Save</i>")
-    newDirectionsControl.append(newSaveBtn)
+    newButtonContainer.append(newSaveBtn)
 
     // this creates a button for the user to mark a recipe as a favorite
     let newFavoriteBtn = $("<button>")
     newFavoriteBtn.addClass("button favorite-btn")
     newFavoriteBtn.html("<i>Mark as Favorite</i>")
-    newDirectionsControl.append(newFavoriteBtn)
+    newButtonContainer.append(newFavoriteBtn)
 
     // thes creates a remove recipe button incase the user wants to remove the recipe
     let newRemoveBtn = $("<button>")
     newRemoveBtn.addClass("button remove-recipe-btn")
     newRemoveBtn.html("<i>Remove recipe</i>")
-    newDirectionsControl.append(newRemoveBtn)
+    newButtonContainer.append(newRemoveBtn)
 
     // this increments the currentRecipeNumber by 1.  This indicates how many cards have already been built
     currentRecipeNumber++
@@ -497,23 +495,28 @@ function compileRecipeCards(arrayToCompile) {
         newDirectionsInput.html(directionsToBePopulated)
         newDirectionsControl.append(newDirectionsInput)
 
+        // creates a new container for the buttons
+        let newButtonContainer = $("<div>")
+        newButtonContainer.addClass("btn-container")
+        newCardContent.append(newButtonContainer)
+
         // this creates a save button for the user to click to save any updates information
         let newSaveBtn = $("<button>")
         newSaveBtn.addClass("button save-recipe")
         newSaveBtn.html("<i>Save</i>")
-        newDirectionsControl.append(newSaveBtn)
+        newButtonContainer.append(newSaveBtn)
 
         // this creates a button for the user to mark a recipe as a favorite
         let newFavoriteBtn = $("<button>")
         newFavoriteBtn.addClass("button favorite-btn")
         newFavoriteBtn.html("<i>Mark as Favorite</i>")
-        newDirectionsControl.append(newFavoriteBtn)
+        newButtonContainer.append(newFavoriteBtn)
 
         // thes creates a remove recipe button incase the user wants to remove the recipe
         let newRemoveBtn = $("<button>")
         newRemoveBtn.addClass("button remove-recipe-btn")
         newRemoveBtn.html("<i>Remove recipe</i>")
-        newDirectionsControl.append(newRemoveBtn)
+        newButtonContainer.append(newRemoveBtn)
 
         // this increments the currentRecipeNumber by 1.  This indicates how many cards have already been built
         currentRecipeNumber++

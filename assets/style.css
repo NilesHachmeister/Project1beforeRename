@@ -53,11 +53,11 @@ span {
     width: 100%;
 
 }
-container{
+container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    }
+}
     .card{
         height: 300px;
         width: 200px;
@@ -65,7 +65,7 @@ container{
         padding: 10px;
         width: 200px;
         justify-content: center;
-        background-color: rgb(226, 219, 176);
+        background-color: rgb(239 239 239);
         border-radius: 9px;
             /* offset-x | offset-y | blur-radius | spread-radius | color */
             /* -webkit-box-shadow: -2px -1px 15px 7px rgba(0,0,0,0.5);
@@ -101,12 +101,15 @@ container{
         border-radius: 8px;
         background-color:green(160, 25, 25);
         color: red;
-       }
-}
+    }
 
 
-hero.is-info {
+
+.hero.is-info {
     background-color: white;
     color: #fff;
 }
 
+footer {
+    width: 100%;
+}

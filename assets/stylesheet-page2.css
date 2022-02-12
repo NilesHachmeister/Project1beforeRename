@@ -24,6 +24,7 @@ h1{
 .column{
     background-color: white;
     padding: 12px;
+<<<<<<< HEAD
 }
 
 .hero-body{
@@ -34,6 +35,18 @@ h1{
     padding-bottom: 15px;
 }
 
+=======
+}
+
+.hero-body{
+    background-color: rgb(214 217 220);
+}
+
+.title{
+    padding-bottom: 15px;
+}
+
+>>>>>>> b8479fd9ef75c501dac120286b67f400c4b756ec
 .sider{
     background-color: rgb(214 217 220);
     margin: 12px;
@@ -59,5 +72,22 @@ li button{
     width: 100%;
     border: 0;
     margin-bottom: 5px;
+<<<<<<< HEAD
 }
 
+=======
+}
+.card-header-title{
+    max-width: 100%;
+
+}
+.text-input-for-recipe{
+    width: 100%;
+min-height: 50px;
+border: 1px solid grey;
+}
+
+[contentEditable=true]:empty:not(:focus):before{
+    content:attr(data-text)
+}
+>>>>>>> b8479fd9ef75c501dac120286b67f400c4b756ec

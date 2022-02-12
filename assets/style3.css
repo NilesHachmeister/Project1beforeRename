@@ -4,9 +4,12 @@ container{
     justify-content: center;
     }
     .card{
+        height: 300px;
+        width: 200px;
         margin: 20px;
         padding: 10px;
         width: 200px;
+        justify-content: center;
         background-color: rgb(226, 219, 176);
         border-radius: 9px;
             /* offset-x | offset-y | blur-radius | spread-radius | color */
@@ -17,16 +20,24 @@ container{
     
     img{
         margin-bottom: 20px;
+        position: absolute;
+        bottom: 45px;
+        display: wrap;
+        width: 80%;
+        align-items: center;
     }
     
     .buttoncard{
         margin-left: 60px;
-        background-color: lightblue;
-       color:black;
+        background-color: gray;
+       color:white;
         width: 45%;
         font-size: 12px;
         border-radius: 10px;
         display: inline;
+        position: absolute;
+        bottom: 15px;
+        right:15px;
     
     }
     .buttoncard:hover{

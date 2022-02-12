@@ -26,21 +26,13 @@ h1{
     padding: 12px;
 }
 
-.hero-body{
-    background-color: rgb(214 217 220);
+
+.hero.is-info.is-small {
+    background-color: #FFFFFF;
+    color: #fff;
 }
 
-.title{
-    padding-bottom: 15px;
-}
 
-.hero-body{
-    background-color: rgb(214 217 220);
-}
-
-.title{
-    padding-bottom: 15px;
-}
 
 .hero-body{
     background-color: rgb(214 217 220);

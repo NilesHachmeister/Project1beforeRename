@@ -143,7 +143,7 @@ function callAPIByID() {
 function saveInts() {
 
     // this clears local storage and the old array before adding what we currently want to save
-    localStorage.clear("intolerantArray");
+    localStorage.removeItem("intolerantArray")
     let intolerantArray = [];
 
     // this checks each checkbox, if they are checked the value is pushed into the array
@@ -318,18 +318,13 @@ function createEmptyRecipe() {
     newDiv2.addClass("card")
     newDiv1.append(newDiv2)
 
-    // this creates a header and appends it to its parrent
+    // this creates a header and appends it to its parrent. It sets it to have a default recipe name, and gives it an id number
     let newHeader = $("<header>")
-    newHeader.addClass("card-header")
+    newHeader.addClass("card-header card-header-title")
+    newHeader.attr("contenteditable", "true")
+    newHeader.attr("data-id", (savedRecipe.length))
+    newHeader.attr("data-text", "Your recipe name")
     newDiv2.append(newHeader)
-
-    // this creates a p tag inside of the header and sets it to have a default recipe name, and gives it an id number
-    let newCardTitle = $("<p>")
-    newCardTitle.addClass("card-header-title")
-    newCardTitle.attr("contenteditable", "true")
-    newCardTitle.attr("data-id", (savedRecipe.length))
-    newCardTitle.attr("data-text", "Your recipe name")
-    newHeader.append(newCardTitle)
 
     // this creates another div for the card contents
     let newCardBody = $("<div>")
@@ -438,18 +433,13 @@ function compileRecipeCards(arrayToCompile) {
         newDiv2.addClass("card")
         newDiv1.append(newDiv2)
 
-        // this creates a header and appends it to its parrent
+        // this creates a header and appends it to its parrent. It sets it to have the saved recipe name and sets it to its id number
         let newHeader = $("<header>")
-        newHeader.addClass("card-header")
+        newHeader.addClass("card-header card-header-title")
+        newHeader.attr("contenteditable", "true")
+        newHeader.attr("data-id", arrayToCompile[index].recipeNumber)
+        newHeader.html(nameToBePopulated)
         newDiv2.append(newHeader)
-
-        // this creates a p tag inside of the header and sets it to the recipes name, and gives it an id number
-        let newCardTitle = $("<p>")
-        newCardTitle.addClass("card-header-title")
-        newCardTitle.attr("contenteditable", "true")
-        newCardTitle.attr("data-id", arrayToCompile[index].recipeNumber)
-        newCardTitle.html(nameToBePopulated)
-        newHeader.append(newCardTitle)
 
         // this creates another div for the card contents
         let newCardBody = $("<div>")
@@ -551,7 +541,8 @@ function saveRecipe() {
 
 
     // this gets the new reciepes name
-    let newRecipeNameBox = $(this).parent(".btn-container").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
+    let newRecipeNameBox = $(this).parent(".btn-container").parent(".content").parent(".card-content").parent(".card").children(".card-header")
+
     let newRecipeName = newRecipeNameBox.text()
 
     // this gets the new recipes ingredients
@@ -666,7 +657,7 @@ function buildRecipeToSave(data2) {
 function findFavoriteRecipeID() {
 
     // this finds the data id of the clicked card
-    let thisElement = $(this).parent(".btn-container").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
+    let thisElement = $(this).parent(".btn-container").parent(".content").parent(".card-content").parent(".card").children(".card-header")
     let thisDataId = thisElement.attr("data-id")
 
     // this sends the data id to the add favorite function to give that chosen card the value of favorite
@@ -758,7 +749,7 @@ function sortByCreated() {
 function removeRecipe() {
 
     // this gets the recipe data-id number
-    let thisElement = $(this).parent(".btn-container").parent(".content").parent(".card-content").parent(".card").children(".card-header").children(".card-header-title")
+    let thisElement = $(this).parent(".btn-container").parent(".content").parent(".card-content").parent(".card").children(".card-header")
     let thisDataId = thisElement.attr("data-id")
 
     // this for loop checks every recipe
@@ -826,6 +817,11 @@ $("#go-to-recipes-button").on("click", function () {
 let dropdown = $(".dropdown")
 dropdown.on("click", function (e) {
     dropdown.toggleClass('is-active');
+    if (e.target.type === "checkbox" || $(this).is("label")) {
+        dropdown.toggleClass('is-active');
+    }
+    saveInts()
+
 })
 
 // this saves the recipes

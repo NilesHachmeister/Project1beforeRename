@@ -29,19 +29,9 @@ h1{
 }
 
 
-<<<<<<< HEAD
-.hero.is-info {
-    background-color: #ffffff;
-    color: #fff;
-}
-
-.title{
-    padding-bottom: 15px;
-=======
 .hero.is-info.is-small {
     background-color: #FFFFFF;
     color: #fff;
->>>>>>> c9d6d833c9b679f65d35c54fe342b6c0139b9e8f
 }
 
 

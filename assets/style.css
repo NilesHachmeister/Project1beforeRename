@@ -27,7 +27,7 @@ span {
 
 .subtitle { 
     font-weight: bolder;
-    font-style: oblique;
+    font-style:normal;
 }
 
 #main-title {
@@ -75,7 +75,7 @@ container {
     padding: 10px;
     width: 200px;
     justify-content: center;
-    background-color: rgba(235, 238, 241, 0.822);
+    background-color: rgb(245, 240, 231);
     border-radius: 9px;
     box-shadow: -4px -3px 45px 21px rgba(0,0,0,0.35);
 }

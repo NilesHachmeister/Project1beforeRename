@@ -318,13 +318,18 @@ function createEmptyRecipe() {
     newDiv2.addClass("card")
     newDiv1.append(newDiv2)
 
-    // this creates a header and appends it to its parrent. It sets it to have a default recipe name, and gives it an id number
+    // this creates a header and appends it to its parrent
     let newHeader = $("<header>")
-    newHeader.addClass("card-header card-header-title")
-    newHeader.attr("contenteditable", "true")
-    newHeader.attr("data-id", (savedRecipe.length))
-    newHeader.attr("data-text", "Your recipe name")
+    newHeader.addClass("card-header")
     newDiv2.append(newHeader)
+
+    // this creates a p tag inside of the header and sets it to have a default recipe name, and gives it an id number
+    let newCardTitle = $("<p>")
+    newCardTitle.addClass("card-header-title")
+    newCardTitle.attr("contenteditable", "true")
+    newCardTitle.attr("data-id", (savedRecipe.length))
+    newCardTitle.attr("placeholder", "Your recipe name")
+    newHeader.append(newCardTitle)
 
     // this creates another div for the card contents
     let newCardBody = $("<div>")
@@ -433,13 +438,19 @@ function compileRecipeCards(arrayToCompile) {
         newDiv2.addClass("card")
         newDiv1.append(newDiv2)
 
-        // this creates a header and appends it to its parrent. It sets it to have the saved recipe name and sets it to its id number
+
+        // this creates a header and appends it to its parrent
         let newHeader = $("<header>")
-        newHeader.addClass("card-header card-header-title")
-        newHeader.attr("contenteditable", "true")
-        newHeader.attr("data-id", arrayToCompile[index].recipeNumber)
-        newHeader.html(nameToBePopulated)
+        newHeader.addClass("card-header")
         newDiv2.append(newHeader)
+
+        // this creates a p tag inside of the header and sets it to the recipes name, and gives it an id number
+        let newCardTitle = $("<p>")
+        newCardTitle.addClass("card-header-title")
+        newCardTitle.attr("contenteditable", "true")
+        newCardTitle.attr("data-id", arrayToCompile[index].recipeNumber)
+        newCardTitle.html(nameToBePopulated)
+        newHeader.append(newCardTitle)
 
         // this creates another div for the card contents
         let newCardBody = $("<div>")

@@ -60,6 +60,7 @@ span {
     height: 200px;
     margin-bottom: 20px;
     width: 100%;
+    transform: translate(10px);
 }
 
 container {

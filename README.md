@@ -23,4 +23,4 @@
 ####
 [Github Repo]()
 ####
-![Screenshot](./git-images/Cook_SS.png)
+![Screenshot](./git-images/cook_ss.png)

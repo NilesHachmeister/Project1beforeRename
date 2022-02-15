@@ -24,5 +24,5 @@
 [Github Repo]()
 ####
 
-<img src="./git-images/cook_ss.png">
+<img src= "./git-images/cook_ss.png">
 <img src="./git-images/recipe_ss.png">

@@ -1,4 +1,3 @@
-#### Project 1
 ## To cook, or not too cook?
 # User story:
 * As a user deciding what to eat, they pull up our webpage.
@@ -19,7 +18,13 @@
 * Have a polished UI.√
 * Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).√
 * Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).√
-[Live website]()
+*The live website can be found at: https://nileshachmeister.github.io/to-cook-or-not-to-cook/
+*Technologies used: HTML, CSS, JavaScript, Jquery, Bulma, Spoonacular API, Google Places API
+*Contact Information:
+-Niles Hachmeister: Nilesquackmeister@gmail.com
+-Tyler Keuler: ypr_tylerkeuler@aol.com
+-Luca Urbanowicz: human.exp11@gmail.com
+-Maryia Vinogradova:
 ####
 [Github Repo]()
 ####

@@ -1,7 +1,5 @@
 // declaring variables
 let modalBtn = $("#modal-btn")
-const spoonAPIKey = "61eaa0a762fa43dfb497dc228b48ebd3"
-const googleAPIKey = "AIzaSyBrDSZjlqk6nk4E7-qJeQrilr6yOlcXvmY"
 let intolerantParams = "";
 let intolerantArray = [];
 let searchTerm = ""

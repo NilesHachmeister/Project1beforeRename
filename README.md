@@ -24,7 +24,7 @@
 -Niles Hachmeister: Nilesquackmeister@gmail.com
 -Tyler Keuler: ypr_tylerkeuler@aol.com
 -Luca Urbanowicz: human.exp11@gmail.com
--Maryia Vinogradova:
+-Maryia Vinogradova: maryiavinogradova@gmail.com
 ####
 [Github Repo]()
 ####
